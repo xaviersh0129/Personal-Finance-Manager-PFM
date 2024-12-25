@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo">
+    <ActionBar title="Financial Health" />
+    
+    <ScrollView>
+        <StackLayout class="p-4">
+            <!-- Overview Section -->
+            <StackLayout class="bg-blue-100 p-4 rounded-lg mb-4">
+                <Label text="Financial Overview" class="text-xl font-bold mb-2" />
+                <GridLayout columns="*, *" rows="auto, auto, auto">
+                    <Label text="Net Worth:" class="text-gray-600" row="0" col="0" />
+                    <Label text="{{ netWorthFormatted }}" class="text-right font-bold" row="0" col="1" />
+                    
+                    <Label text="Monthly Cashflow:" class="text-gray-600" row="1" col="0" />
+                    <Label text="{{ monthlyCashflowFormatted }}" class="text-right font-bold" row="1" col="1" />
+                    
+                    <Label text="Debt-to-Income:" class="text-gray-600" row="2" col="0" />
+                    <Label text="{{ debtToIncomeRatioFormatted }}" class="text-right font-bold" row="2" col="1" />
+                </GridLayout>
+            </StackLayout>
+
+            <!-- Monthly Reports -->
+            <Label text="Monthly Reports" class="text-xl font-bold mb-2" />
+            <ListView items="{{ monthlyReports }}" height="300">
+                <ListView.itemTemplate>
+                    <GridLayout columns="*, auto" rows="auto, auto" class="p-4 border-b">
+                        <Label text="{{ monthYear }}" row="0" col="0" class="font-bold" />
+                        <Label text="{{ savingsRateFormatted }}" row="0" col="1" class="text-right" />
+                        <Label text="{{ 'Income: ' + incomeFormatted }}" row="1" col="0" class="text-gray-600 text-sm" />
+                        <Label text="{{ 'Expenses: ' + expensesFormatted }}" row="1" col="1" class="text-gray-600 text-sm text-right" />
+                    </GridLayout>
+                </ListView.itemTemplate>
+            </ListView>
+        </StackLayout>
+    </ScrollView>
+</Page>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo">
+    <ActionBar title="Liabilities">
+        <NavigationButton text="Back" android.systemIcon="ic_menu_back" tap="{{ goBack }}" />
+    </ActionBar>
+    
+    <GridLayout rows="auto, auto, *">
+        <Label text="{{ 'Total Liabilities: ' + totalLiabilitiesFormatted }}" class="p-4 text-lg font-bold bg-purple-100" row="0" />
+        
+        <!-- Add Button -->
+        <Button text="Add Liability" tap="{{ onAddLiability }}" 
+                class="m-2 p-4 bg-purple-500 text-white rounded-lg" row="1" />
+        
+        <ListView items="{{ liabilities }}" row="2" itemTap="{{ onItemTap }}">
+            <ListView.itemTemplate>
+                <GridLayout columns="*, auto" rows="auto, auto" class="p-4 border-b">
+                    <Label text="{{ name }}" row="0" col="0" class="font-bold" />
+                    <Label text="{{ formattedAmount }}" row="0" col="1" class="text-right text-red-600" />
+                    <Label text="{{ type }}" row="1" col="0" class="text-gray-600 text-sm" />
+                    <Label text="{{ formattedInterestRate }}" row="1" col="1" class="text-gray-600 text-sm text-right" />
+                </GridLayout>
+            </ListView.itemTemplate>
+        </ListView>
+    </GridLayout>
+</Page>

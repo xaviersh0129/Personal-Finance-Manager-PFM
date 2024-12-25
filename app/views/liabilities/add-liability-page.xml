@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo">
+    <ActionBar title="Add Liability">
+        <NavigationButton text="Back" android.systemIcon="ic_menu_back" tap="{{ goBack }}" />
+    </ActionBar>
+    
+    <ScrollView>
+        <StackLayout class="p-4">
+            <TextField hint="Liability Name" text="{{ name }}" class="mb-4 p-2 border rounded" />
+            
+            <TextField 
+                hint="Amount" 
+                text="{{ amount }}" 
+                keyboardType="number" 
+                class="mb-4 p-2 border rounded" />
+            
+            <TextField 
+                hint="Interest Rate (%)" 
+                text="{{ interestRate }}" 
+                keyboardType="number" 
+                class="mb-4 p-2 border rounded" />
+            
+            <Label text="Type" class="mb-2" />
+            <ListPicker items="{{ types }}" 
+                       selectedIndex="{{ selectedTypeIndex }}"
+                       class="mb-4 p-2 border rounded" />
+            
+            <DatePicker date="{{ dueDate }}" class="mb-4" />
+            
+            <Button text="Save" tap="{{ onSave }}" class="p-4 bg-purple-500 text-white rounded-lg" />
+        </StackLayout>
+    </ScrollView>
+</Page>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo">
+    <ActionBar title="Personal Finance Manager" />
+    
+    <ScrollView>
+        <StackLayout class="p-4">
+            <!-- Dashboard Overview -->
+            <StackLayout class="bg-blue-100 p-4 rounded-lg mb-4">
+                <Label text="Financial Overview" class="text-xl font-bold mb-2" />
+                <GridLayout columns="*, *" rows="auto, auto" class="mb-2">
+                    <Label text="Net Worth:" class="text-gray-600" row="0" col="0" />
+                    <Label text="{{ netWorthFormatted }}" class="text-right font-bold" row="0" col="1" />
+                    <Label text="Monthly Cashflow:" class="text-gray-600" row="1" col="0" />
+                    <Label text="{{ cashflowFormatted }}" class="text-right font-bold" row="1" col="1" />
+                </GridLayout>
+            </StackLayout>
+
+            <!-- Main Navigation -->
+            <GridLayout columns="*, *" rows="auto, auto" class="mb-4">
+                <Button text="INCOME" tap="onNavigateToIncome" class="m-1 bg-green-500 text-white" row="0" col="0" />
+                <Button text="EXPENSE" tap="onNavigateToExpense" class="m-1 bg-red-500 text-white" row="0" col="1" />
+                <Button text="ASSETS" tap="onNavigateToAssets" class="m-1 bg-blue-500 text-white" row="1" col="0" />
+                <Button text="LIABILITIES" tap="onNavigateToLiabilities" class="m-1 bg-purple-500 text-white" row="1" col="1" />
+            </GridLayout>
+
+            <!-- Monthly Summary -->
+            <StackLayout class="bg-gray-100 p-4 rounded-lg">
+                <Label text="Monthly Summary" class="text-xl font-bold mb-2" />
+                <GridLayout columns="*, *" rows="auto, auto" class="mb-2">
+                    <Label text="Income:" class="text-gray-600" row="0" col="0" />
+                    <Label text="{{ monthlyIncomeFormatted }}" class="text-right text-green-600 font-bold" row="0" col="1" />
+                    <Label text="Expenses:" class="text-gray-600" row="1" col="0" />
+                    <Label text="{{ monthlyExpensesFormatted }}" class="text-right text-red-600 font-bold" row="1" col="1" />
+                </GridLayout>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</Page>

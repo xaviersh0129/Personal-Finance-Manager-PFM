@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo">
+    <ActionBar>
+        <NavigationButton text="Back" android.systemIcon="ic_menu_back" tap="{{ goBack }}" />
+    </ActionBar>
+    
+    <GridLayout rows="auto, auto, *">
+        <!-- Total Section -->
+        <Label text="{{ totalAmountFormatted }}" 
+               class="{{ filterType === 'income' ? 'p-4 text-lg font-bold bg-green-100' : 'p-4 text-lg font-bold bg-red-100' }}" 
+               row="0" />
+        
+        <!-- Add Button -->
+        <Button text="{{ 'Add ' + (filterType === 'income' ? 'Income' : 'Expense') }}" 
+                tap="{{ onAddTransaction }}" 
+                class="{{ filterType === 'income' ? 'm-2 p-4 bg-green-500 text-white rounded-lg' : 'm-2 p-4 bg-red-500 text-white rounded-lg' }}" 
+                row="1" />
+        
+        <!-- Transactions List -->
+        <ListView items="{{ transactions }}" row="2" itemTap="{{ onItemTap }}">
+            <ListView.itemTemplate>
+                <GridLayout columns="*, auto" rows="auto, auto" class="p-4 border-b">
+                    <Label text="{{ description }}" row="0" col="0" class="font-bold" />
+                    <Label text="{{ formattedAmount }}" row="0" col="1" 
+                           class="text-right {{ type === 'income' ? 'text-green-600' : 'text-red-600' }}" />
+                    <Label text="{{ category }}" row="1" col="0" class="text-gray-600 text-sm" />
+                    <Label text="{{ formattedDate }}" row="1" col="1" class="text-gray-600 text-sm text-right" />
+                </GridLayout>
+            </ListView.itemTemplate>
+        </ListView>
+    </GridLayout>
+</Page>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo">
+    <ActionBar title="Add Asset">
+        <NavigationButton text="Back" android.systemIcon="ic_menu_back" tap="{{ goBack }}" />
+    </ActionBar>
+    
+    <ScrollView>
+        <StackLayout class="p-4">
+            <TextField hint="Asset Name" text="{{ name }}" class="mb-4 p-2 border rounded" />
+            
+            <TextField 
+                hint="Value" 
+                text="{{ value }}" 
+                keyboardType="number" 
+                class="mb-4 p-2 border rounded" />
+            
+            <Label text="Category" class="mb-2" />
+            <ListPicker items="{{ categories }}" 
+                       selectedIndex="{{ selectedCategoryIndex }}"
+                       class="mb-4 p-2 border rounded" />
+            
+            <DatePicker date="{{ purchaseDate }}" class="mb-4" />
+            
+            <Button text="Save" tap="{{ onSave }}" class="p-4 bg-blue-500 text-white rounded-lg" />
+        </StackLayout>
+    </ScrollView>
+</Page>
