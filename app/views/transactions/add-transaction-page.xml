@@ -2,29 +2,39 @@
 <Page xmlns="http://schemas.nativescript.org/tns.xsd" 
     navigatingTo="navigatingTo"
     navigatingFrom="navigatingFrom">
-    <ActionBar>
+    <ActionBar class="bg-blue-600">
         <NavigationButton text="Back" android.systemIcon="ic_menu_back" tap="{{ goBack }}" />
+        <Label text="{{ isIncome ? 'Add Income' : 'Add Expense' }}" class="text-white text-lg font-bold" />
     </ActionBar>
     
-    <ScrollView>
+    <ScrollView class="bg-gray-100">
         <StackLayout class="p-4">
-            <TextField hint="Description" text="{{ description }}" class="mb-4 p-2 border rounded" />
+            <StackLayout class="bg-white p-6 rounded-xl elevation-4">
+                <!-- Description Field -->
+                <Label text="Description" class="form-label" />
+                <TextField hint="Enter description" text="{{ description }}" 
+                          class="input-field" />
+                
+                <!-- Amount Field -->
+                <Label text="Amount" class="form-label mt-4" />
+                <TextField hint="Enter amount" text="{{ amount }}" 
+                          keyboardType="number"
+                          class="input-field" />
+                
+                <!-- Category Selection -->
+                <Label text="Category" class="form-label mt-4" />
+                <ListPicker items="{{ categories }}" 
+                           selectedIndex="{{ selectedCategoryIndex }}"
+                           class="input-field" />
+                
+                <!-- Date -->
+                <Label text="Date" class="form-label mt-4" />
+                <DatePicker date="{{ date }}" class="input-field" />
+            </StackLayout>
             
-            <TextField 
-                hint="Amount" 
-                text="{{ amount }}" 
-                keyboardType="number" 
-                class="mb-4 p-2 border rounded" />
-            
-            <Label text="Category" class="mb-2" />
-            <ListPicker items="{{ categories }}" 
-                       selectedIndex="{{ selectedCategoryIndex }}"
-                       class="mb-4 p-2 border rounded" />
-            
-            <DatePicker date="{{ date }}" class="mb-4" />
-            
-            <Button text="Save" tap="{{ onSave }}" 
-                    class="{{ 'p-4 text-white rounded-lg ' + (isIncome ? 'bg-green-500' : 'bg-red-500') }}" />
+            <!-- Save Button -->
+            <Button text="{{ isIncome ? 'Save Income' : 'Save Expense' }}" tap="{{ onSave }}" 
+                    class="{{ isIncome ? 'bg-green-500 text-white font-medium p-4 mt-4 rounded-xl elevation-2' : 'bg-red-500 text-white font-medium p-4 mt-4 rounded-xl elevation-2' }}" />
         </StackLayout>
     </ScrollView>
 </Page>

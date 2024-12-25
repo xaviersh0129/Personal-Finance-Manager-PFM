@@ -23,20 +23,22 @@
                     }
                 },
                 {
-                    "source": "D:\\Dev\\PFM\\platforms\\android\\app\\src\\main\\res\\values\\ic_launcher_background.xml",
+                    "source": "D:\\Dev\\Personal-Finance-Manager-PFM\\platforms\\android\\app\\src\\main\\res\\values\\errorstyles.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "56",
-                        "endOffsets": "107"
+                        "startOffsets": "114",
+                        "endLines": "5",
+                        "endColumns": "12",
+                        "endOffsets": "309"
                     },
                     "to": {
-                        "startLines": "597",
+                        "startLines": "5265",
                         "startColumns": "4",
-                        "startOffsets": "31959",
-                        "endColumns": "56",
-                        "endOffsets": "32011"
+                        "startOffsets": "366035",
+                        "endLines": "5268",
+                        "endColumns": "12",
+                        "endOffsets": "366230"
                     }
                 },
                 {
@@ -59,6 +61,40 @@
                     }
                 },
                 {
+                    "source": "D:\\Dev\\Personal-Finance-Manager-PFM\\platforms\\android\\app\\src\\main\\res\\values\\colors.xml",
+                    "from": {
+                        "startLines": "9,3,6",
+                        "startColumns": "1,4,4",
+                        "startOffsets": "417,104,275",
+                        "endColumns": "40,44,48",
+                        "endOffsets": "456,144,319"
+                    },
+                    "to": {
+                        "startLines": "785,786,787",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "45697,45741,45786",
+                        "endColumns": "43,44,48",
+                        "endOffsets": "45736,45781,45830"
+                    }
+                },
+                {
+                    "source": "D:\\Dev\\Personal-Finance-Manager-PFM\\platforms\\android\\app\\src\\main\\res\\values\\strings.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,96",
+                        "endColumns": "40,53",
+                        "endOffsets": "91,145"
+                    },
+                    "to": {
+                        "startLines": "1719,1856",
+                        "startColumns": "4,4",
+                        "startOffsets": "111923,131374",
+                        "endColumns": "40,53",
+                        "endOffsets": "111959,131423"
+                    }
+                },
+                {
                     "source": "C:\\Users\\huash\\.gradle\\caches\\transforms-3\\a9382cd6c24c98b14ed9ca584cd8e7ea\\transformed\\jetified-appcompat-resources-1.5.1\\res\\values\\values.xml",
                     "from": {
                         "startLines": "2,18,24,34,50",
@@ -78,25 +114,6 @@
                     }
                 },
                 {
-                    "source": "D:\\Dev\\PFM\\platforms\\android\\app\\src\\main\\res\\values\\styles.xml",
-                    "from": {
-                        "startLines": "29,21,17,4,39,33",
-                        "startColumns": "4,4,4,4,4,4",
-                        "startOffsets": "1204,858,721,158,1606,1302",
-                        "endLines": "30,27,18,15,40,37",
-                        "endColumns": "12,12,12,12,12,12",
-                        "endOffsets": "1262,1198,797,715,1696,1600"
-                    },
-                    "to": {
-                        "startLines": "1878,1880,5152,5154,5258,5260",
-                        "startColumns": "4,4,4,4,4,4",
-                        "startOffsets": "132970,133033,358751,358832,365637,365732",
-                        "endLines": "1879,1886,5153,5165,5259,5264",
-                        "endColumns": "12,12,12,12,12,12",
-                        "endOffsets": "133028,133373,358827,359389,365727,366030"
-                    }
-                },
-                {
                     "source": "C:\\Users\\huash\\.gradle\\caches\\transforms-3\\9a34f76deda5e794e4c11f5c27e0a354\\transformed\\lifecycle-runtime-2.5.1\\res\\values\\values.xml",
                     "from": {
                         "startLines": "2",
@@ -111,6 +128,23 @@
                         "startOffsets": "105415",
                         "endColumns": "42",
                         "endOffsets": "105453"
+                    }
+                },
+                {
+                    "source": "D:\\Dev\\Personal-Finance-Manager-PFM\\platforms\\android\\app\\src\\main\\res\\values\\ic_launcher_background.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "56",
+                        "endOffsets": "107"
+                    },
+                    "to": {
+                        "startLines": "597",
+                        "startColumns": "4",
+                        "startOffsets": "31959",
+                        "endColumns": "56",
+                        "endOffsets": "32011"
                     }
                 },
                 {
@@ -188,25 +222,6 @@
                     }
                 },
                 {
-                    "source": "D:\\Dev\\PFM\\platforms\\android\\app\\src\\main\\res\\values\\errorstyles.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "114",
-                        "endLines": "5",
-                        "endColumns": "12",
-                        "endOffsets": "309"
-                    },
-                    "to": {
-                        "startLines": "5265",
-                        "startColumns": "4",
-                        "startOffsets": "366035",
-                        "endLines": "5268",
-                        "endColumns": "12",
-                        "endOffsets": "366230"
-                    }
-                },
-                {
                     "source": "C:\\Users\\huash\\.gradle\\caches\\transforms-3\\79dd3da2a72a816ca0c6a7744a7604ee\\transformed\\coordinatorlayout-1.1.0\\res\\values\\values.xml",
                     "from": {
                         "startLines": "2,3,6,16",
@@ -276,23 +291,6 @@
                         "startOffsets": "105518",
                         "endColumns": "53",
                         "endOffsets": "105567"
-                    }
-                },
-                {
-                    "source": "D:\\Dev\\PFM\\platforms\\android\\app\\src\\main\\res\\values\\colors.xml",
-                    "from": {
-                        "startLines": "9,3,6",
-                        "startColumns": "1,4,4",
-                        "startOffsets": "417,104,275",
-                        "endColumns": "40,44,48",
-                        "endOffsets": "456,144,319"
-                    },
-                    "to": {
-                        "startLines": "785,786,787",
-                        "startColumns": "4,4,4",
-                        "startOffsets": "45697,45741,45786",
-                        "endColumns": "43,44,48",
-                        "endOffsets": "45736,45781,45830"
                     }
                 },
                 {
@@ -368,23 +366,6 @@
                     }
                 },
                 {
-                    "source": "D:\\Dev\\PFM\\platforms\\android\\app\\src\\main\\res\\values\\strings.xml",
-                    "from": {
-                        "startLines": "2,3",
-                        "startColumns": "4,4",
-                        "startOffsets": "55,96",
-                        "endColumns": "40,53",
-                        "endOffsets": "91,145"
-                    },
-                    "to": {
-                        "startLines": "1719,1856",
-                        "startColumns": "4,4",
-                        "startOffsets": "111923,131374",
-                        "endColumns": "40,53",
-                        "endOffsets": "111959,131423"
-                    }
-                },
-                {
                     "source": "C:\\Users\\huash\\.gradle\\caches\\transforms-3\\4752aedfcc4a36b75a4bdc65479f06be\\transformed\\recyclerview-1.1.0\\res\\values\\values.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10",
@@ -404,7 +385,7 @@
                     }
                 },
                 {
-                    "source": "D:\\Dev\\PFM\\platforms\\android\\app\\src\\debug\\res\\values\\colors.xml",
+                    "source": "D:\\Dev\\Personal-Finance-Manager-PFM\\platforms\\android\\app\\src\\debug\\res\\values\\colors.xml",
                     "from": {
                         "startLines": "3,2,4,5",
                         "startColumns": "4,4,4,4",
@@ -435,6 +416,25 @@
                         "startOffsets": "102105,102145,103336,103518,103573,105069,105123,105175,105224,105285",
                         "endColumns": "39,46,42,54,46,53,51,48,60,49",
                         "endOffsets": "102140,102187,103374,103568,103615,105118,105170,105219,105280,105330"
+                    }
+                },
+                {
+                    "source": "D:\\Dev\\Personal-Finance-Manager-PFM\\platforms\\android\\app\\src\\main\\res\\values\\styles.xml",
+                    "from": {
+                        "startLines": "29,21,17,4,39,33",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "1204,858,721,158,1606,1302",
+                        "endLines": "30,27,18,15,40,37",
+                        "endColumns": "12,12,12,12,12,12",
+                        "endOffsets": "1262,1198,797,715,1696,1600"
+                    },
+                    "to": {
+                        "startLines": "1878,1880,5152,5154,5258,5260",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "132970,133033,358751,358832,365637,365732",
+                        "endLines": "1879,1886,5153,5165,5259,5264",
+                        "endColumns": "12,12,12,12,12,12",
+                        "endOffsets": "133028,133373,358827,359389,365727,366030"
                     }
                 }
             ]

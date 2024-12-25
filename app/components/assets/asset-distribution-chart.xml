@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<GridLayout rows="auto, auto" class="m-4" 
+    xmlns="http://schemas.nativescript.org/tns.xsd">
+    <GridLayout row="0" class="bg-gray-100 p-4 rounded-lg">
+        <Repeater items="{{ chartData }}" height="200">
+            <Repeater.itemTemplate>
+                <StackLayout class="p-2">
+                    <GridLayout columns="auto, *, auto" class="mb-2">
+                        <Label col="0" text="●" color="{{ color }}" class="mr-2" />
+                        <Label col="1" text="{{ label }}" class="text-sm" />
+                        <Label col="2" text="{{ percentage + '%' }}" class="text-sm text-right" />
+                    </GridLayout>
+                    <Progress value="{{ percentage }}" maxValue="100" 
+                             class="m-1" color="{{ color }}" />
+                </StackLayout>
+            </Repeater.itemTemplate>
+        </Repeater>
+    </GridLayout>
+</GridLayout>

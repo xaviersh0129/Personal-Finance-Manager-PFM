@@ -7,12 +7,14 @@ const TAG = 'TransactionListPage';
 export function navigatingTo(args: NavigatedData) {
     Logger.debug(TAG, 'Navigating to Transaction List page');
     const page = <Page>args.object;
-    const filterType = args.context?.filterType;
-    
     if (!page.bindingContext) {
-        page.bindingContext = new TransactionListViewModel(filterType);
+        page.bindingContext = new TransactionListViewModel(args.context?.filterType);
     }
+}
 
-    // Set the ActionBar title based on the filter type
-    page.actionBar.title = filterType === 'income' ? 'Income' : 'Expenses';
+export function navigatedTo(args: NavigatedData) {
+    Logger.debug(TAG, 'Navigated to Transaction List page');
+    const page = <Page>args.object;
+    const viewModel = page.bindingContext as TransactionListViewModel;
+    viewModel?.refresh();
 }

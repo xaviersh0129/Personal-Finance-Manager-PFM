@@ -1,3 +1,61 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.elevation-2 {
+    elevation: 2;
+    shadow-color: #000;
+    shadow-offset: 0 2;
+    shadow-opacity: 0.25;
+    shadow-radius: 3.84;
+}
+
+.elevation-4 {
+    elevation: 4;
+    shadow-color: #000;
+    shadow-offset: 0 4;
+    shadow-opacity: 0.3;
+    shadow-radius: 4.65;
+}
+
+ActionBar {
+    background-color: #2563eb;
+    color: #ffffff;
+}
+
+Button {
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.card {
+    background-color: #ffffff;
+    border-radius: 12;
+    margin: 8;
+    padding: 16;
+}
+
+.list-view {
+    separator-color: transparent;
+    background-color: transparent;
+}
+
+Progress {
+    height: 8;
+    border-radius: 4;
+}
+
+.input-field {
+    padding: 12;
+    margin: 8 0;
+    border-width: 1;
+    border-color: #e2e8f0;
+    border-radius: 8;
+    background-color: #f8fafc;
+}
+
+.form-label {
+    font-size: 14;
+    color: #64748b;
+    margin-bottom: 4;
+}

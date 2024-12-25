@@ -1,4 +1,4 @@
-D:\Dev\PFM\platforms\android\app\src\main\assets\app\bundle.js
-D:\Dev\PFM\platforms\android\app\src\main\assets\app\runtime.js
-D:\Dev\PFM\platforms\android\app\src\main\assets\app\tns_modules\inspector_modules.js
-D:\Dev\PFM\platforms\android\app\src\main\assets\app\vendor.js
+D:\Dev\Personal-Finance-Manager-PFM\platforms\android\app\src\main\assets\app\bundle.js
+D:\Dev\Personal-Finance-Manager-PFM\platforms\android\app\src\main\assets\app\runtime.js
+D:\Dev\Personal-Finance-Manager-PFM\platforms\android\app\src\main\assets\app\tns_modules\inspector_modules.js
+D:\Dev\Personal-Finance-Manager-PFM\platforms\android\app\src\main\assets\app\vendor.js

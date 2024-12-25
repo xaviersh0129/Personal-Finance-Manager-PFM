@@ -18,10 +18,10 @@ org.nativescript.app-jetified-emoji2-views-helper-1.2.0-16 C:\Users\huash\.gradl
 org.nativescript.app-jetified-emoji2-1.2.0-17 C:\Users\huash\.gradle\caches\transforms-3\c8482bc2fc833122a323859a7b47a5a1\transformed\jetified-emoji2-1.2.0\res
 org.nativescript.app-jetified-lifecycle-viewmodel-savedstate-2.5.1-18 C:\Users\huash\.gradle\caches\transforms-3\e943d2ada00d5cab1bf6d4780008b91f\transformed\jetified-lifecycle-viewmodel-savedstate-2.5.1\res
 org.nativescript.app-jetified-core-19 C:\Users\huash\.gradle\caches\transforms-3\ed97ca230df04063980c374a024954a5\transformed\jetified-core\res
-org.nativescript.app-pngs-20 D:\Dev\PFM\platforms\android\app\build\generated\res\pngs\release
-org.nativescript.app-resValues-21 D:\Dev\PFM\platforms\android\app\build\generated\res\resValues\release
-org.nativescript.app-packageReleaseResources-22 D:\Dev\PFM\platforms\android\app\build\intermediates\incremental\release\packageReleaseResources\merged.dir
-org.nativescript.app-packageReleaseResources-23 D:\Dev\PFM\platforms\android\app\build\intermediates\incremental\release\packageReleaseResources\stripped.dir
-org.nativescript.app-release-24 D:\Dev\PFM\platforms\android\app\build\intermediates\merged_res\release\mergeReleaseResources
-org.nativescript.app-main-25 D:\Dev\PFM\platforms\android\app\src\main\res
-org.nativescript.app-release-26 D:\Dev\PFM\platforms\android\app\src\release\res
+org.nativescript.app-pngs-20 D:\Dev\Personal-Finance-Manager-PFM\platforms\android\app\build\generated\res\pngs\release
+org.nativescript.app-resValues-21 D:\Dev\Personal-Finance-Manager-PFM\platforms\android\app\build\generated\res\resValues\release
+org.nativescript.app-packageReleaseResources-22 D:\Dev\Personal-Finance-Manager-PFM\platforms\android\app\build\intermediates\incremental\release\packageReleaseResources\merged.dir
+org.nativescript.app-packageReleaseResources-23 D:\Dev\Personal-Finance-Manager-PFM\platforms\android\app\build\intermediates\incremental\release\packageReleaseResources\stripped.dir
+org.nativescript.app-release-24 D:\Dev\Personal-Finance-Manager-PFM\platforms\android\app\build\intermediates\merged_res\release\mergeReleaseResources
+org.nativescript.app-main-25 D:\Dev\Personal-Finance-Manager-PFM\platforms\android\app\src\main\res
+org.nativescript.app-release-26 D:\Dev\Personal-Finance-Manager-PFM\platforms\android\app\src\release\res

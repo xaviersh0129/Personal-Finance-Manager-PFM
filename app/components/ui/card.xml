@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<StackLayout class="bg-white m-4 p-4 rounded-xl elevation-4">
+    <ng-content></ng-content>
+</StackLayout>

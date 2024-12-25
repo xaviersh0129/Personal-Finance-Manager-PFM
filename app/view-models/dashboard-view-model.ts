@@ -9,8 +9,10 @@ const TAG = 'DashboardViewModel';
 
 export class DashboardViewModel extends Observable {
     private _netWorth: number = 0;
-    private _monthlyIncome: number = 0;
-    private _monthlyExpenses: number = 0;
+    private _totalIncome: number = 0;
+    private _totalExpenses: number = 0;
+    private _totalAssets: number = 0;
+    private _totalLiabilities: number = 0;
     private _cashflow: number = 0;
     private transactionService: TransactionService;
     private assetService: AssetService;
@@ -28,74 +30,63 @@ export class DashboardViewModel extends Observable {
         return formatCurrency(this._netWorth);
     }
 
-    get monthlyIncomeFormatted(): string {
-        return formatCurrency(this._monthlyIncome);
+    get totalIncomeFormatted(): string {
+        return formatCurrency(this._totalIncome);
     }
 
-    get monthlyExpensesFormatted(): string {
-        return formatCurrency(this._monthlyExpenses);
+    get totalExpensesFormatted(): string {
+        return formatCurrency(this._totalExpenses);
+    }
+
+    get totalAssetsFormatted(): string {
+        return formatCurrency(this._totalAssets);
+    }
+
+    get totalLiabilitiesFormatted(): string {
+        return formatCurrency(this._totalLiabilities);
     }
 
     get cashflowFormatted(): string {
         return formatCurrency(this._cashflow);
     }
 
-    onAddIncome() {
-        Logger.debug(TAG, 'Navigating to Add Income page');
-        Frame.topmost().navigate({
-            moduleName: "views/transactions/add-transaction-page",
-            context: { isIncome: true }
-        });
-    }
-
-    onAddExpense() {
-        Logger.debug(TAG, 'Navigating to Add Expense page');
-        Frame.topmost().navigate({
-            moduleName: "views/transactions/add-transaction-page",
-            context: { isIncome: false }
-        });
-    }
-
-    onAddAsset() {
-        Logger.debug(TAG, 'Navigating to Add Asset page');
-        Frame.topmost().navigate({
-            moduleName: "views/assets/add-asset-page"
-        });
-    }
-
-    onAddLiability() {
-        Logger.debug(TAG, 'Navigating to Add Liability page');
-        Frame.topmost().navigate({
-            moduleName: "views/liabilities/add-liability-page"
-        });
+    get cashflow(): number {
+        return this._cashflow;
     }
 
     private calculateFinancials() {
-        // Calculate net worth
-        const totalAssets = this.assetService.getTotalAssetValue();
-        const totalLiabilities = this.liabilityService.getTotalLiabilities();
-        this._netWorth = totalAssets - totalLiabilities;
+        // Calculate totals
+        this._totalAssets = this.assetService.getTotalAssetValue();
+        this._totalLiabilities = this.liabilityService.getTotalLiabilities();
+        this._totalIncome = this.transactionService.getTotalIncome();
+        this._totalExpenses = this.transactionService.getTotalExpenses();
 
-        // Calculate monthly income and expenses
+        // Calculate net worth
+        this._netWorth = this._totalAssets - this._totalLiabilities;
+
+        // Calculate monthly cashflow
         const currentDate = new Date();
         const currentMonth = currentDate.getMonth();
         const currentYear = currentDate.getFullYear();
         const monthlyTransactions = this.transactionService.getMonthlyTransactions(currentMonth, currentYear);
 
-        this._monthlyIncome = monthlyTransactions
+        const monthlyIncome = monthlyTransactions
             .filter(t => t.type === 'income')
             .reduce((sum, t) => sum + t.amount, 0);
 
-        this._monthlyExpenses = monthlyTransactions
+        const monthlyExpenses = monthlyTransactions
             .filter(t => t.type === 'expense')
             .reduce((sum, t) => sum + t.amount, 0);
 
-        this._cashflow = this._monthlyIncome - this._monthlyExpenses;
+        this._cashflow = monthlyIncome - monthlyExpenses;
 
         // Notify property changes
         this.notifyPropertyChange('netWorthFormatted', this.netWorthFormatted);
-        this.notifyPropertyChange('monthlyIncomeFormatted', this.monthlyIncomeFormatted);
-        this.notifyPropertyChange('monthlyExpensesFormatted', this.monthlyExpensesFormatted);
+        this.notifyPropertyChange('totalIncomeFormatted', this.totalIncomeFormatted);
+        this.notifyPropertyChange('totalExpensesFormatted', this.totalExpensesFormatted);
+        this.notifyPropertyChange('totalAssetsFormatted', this.totalAssetsFormatted);
+        this.notifyPropertyChange('totalLiabilitiesFormatted', this.totalLiabilitiesFormatted);
         this.notifyPropertyChange('cashflowFormatted', this.cashflowFormatted);
+        this.notifyPropertyChange('cashflow', this.cashflow);
     }
 }

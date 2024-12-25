@@ -1,25 +1,56 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo">
-    <ActionBar title="Liabilities">
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" 
+    navigatingTo="navigatingTo"
+    navigatedTo="navigatedTo">
+    <ActionBar class="bg-blue-600">
         <NavigationButton text="Back" android.systemIcon="ic_menu_back" tap="{{ goBack }}" />
+        <Label text="Liabilities" class="text-white text-lg font-bold" />
     </ActionBar>
     
-    <GridLayout rows="auto, auto, *">
-        <Label text="{{ 'Total Liabilities: ' + totalLiabilitiesFormatted }}" class="p-4 text-lg font-bold bg-purple-100" row="0" />
-        
-        <!-- Add Button -->
-        <Button text="Add Liability" tap="{{ onAddLiability }}" 
-                class="m-2 p-4 bg-purple-500 text-white rounded-lg" row="1" />
-        
-        <ListView items="{{ liabilities }}" row="2" itemTap="{{ onItemTap }}">
-            <ListView.itemTemplate>
-                <GridLayout columns="*, auto" rows="auto, auto" class="p-4 border-b">
-                    <Label text="{{ name }}" row="0" col="0" class="font-bold" />
-                    <Label text="{{ formattedAmount }}" row="0" col="1" class="text-right text-red-600" />
-                    <Label text="{{ type }}" row="1" col="0" class="text-gray-600 text-sm" />
-                    <Label text="{{ formattedInterestRate }}" row="1" col="1" class="text-gray-600 text-sm text-right" />
-                </GridLayout>
-            </ListView.itemTemplate>
-        </ListView>
-    </GridLayout>
+    <ScrollView class="bg-gray-100">
+        <StackLayout>
+            <!-- Total Liabilities Card -->
+            <StackLayout class="bg-purple-500 m-4 p-6 rounded-xl elevation-4">
+                <Label text="Total Liabilities" class="text-white text-sm mb-1" />
+                <Label text="{{ totalLiabilitiesFormatted }}" class="text-white text-2xl font-bold" />
+            </StackLayout>
+            
+            <!-- Distribution Chart -->
+            <StackLayout class="bg-white m-4 p-4 rounded-xl elevation-4">
+                <Label text="Liability Distribution" class="text-xl font-bold mb-4" />
+                <Repeater items="{{ distributionViewModel.chartData }}">
+                    <Repeater.itemTemplate>
+                        <StackLayout class="m-2">
+                            <GridLayout columns="auto, *, auto" class="mb-1">
+                                <Label col="0" text="●" color="{{ color }}" class="mr-2" />
+                                <Label col="1" text="{{ label }}" class="text-gray-700" />
+                                <Label col="2" text="{{ percentage + '%' }}" class="text-gray-600" />
+                            </GridLayout>
+                            <Progress value="{{ percentage }}" maxValue="100" 
+                                     color="{{ color }}" class="m-1" />
+                        </StackLayout>
+                    </Repeater.itemTemplate>
+                </Repeater>
+            </StackLayout>
+            
+            <!-- Add Button -->
+            <Button text="Add Liability" tap="{{ onAddLiability }}" 
+                    class="bg-purple-500 text-white font-medium p-4 mx-4 rounded-xl elevation-2" />
+            
+            <!-- Liabilities List -->
+            <StackLayout class="bg-white m-4 rounded-xl elevation-4">
+                <Label text="Liability List" class="p-4 text-xl font-bold" />
+                <ListView items="{{ liabilities }}" itemTap="{{ onItemTap }}" height="400" class="list-view">
+                    <ListView.itemTemplate>
+                        <GridLayout columns="*, auto" rows="auto, auto" class="p-4 border-b">
+                            <Label text="{{ name }}" row="0" col="0" class="font-bold text-gray-800" />
+                            <Label text="{{ formattedAmount }}" row="0" col="1" class="text-purple-600 font-bold text-right" />
+                            <Label text="{{ type }}" row="1" col="0" class="text-gray-600 text-sm" />
+                            <Label text="{{ formattedInterestRate }}" row="1" col="1" class="text-gray-600 text-sm text-right" />
+                        </GridLayout>
+                    </ListView.itemTemplate>
+                </ListView>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
 </Page>

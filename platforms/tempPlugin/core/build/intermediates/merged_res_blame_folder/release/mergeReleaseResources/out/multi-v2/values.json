@@ -4,7 +4,7 @@
             "outputFile": "org.nativescript.core-mergeReleaseResources-1:/values/values.xml",
             "map": [
                 {
-                    "source": "D:\\Dev\\PFM\\platforms\\tempPlugin\\core\\src\\main\\res\\values\\ids.xml",
+                    "source": "D:\\Dev\\Personal-Finance-Manager-PFM\\platforms\\tempPlugin\\core\\src\\main\\res\\values\\ids.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -19,7 +19,7 @@
             "outputFile": "org.nativescript.core-release-3:/values/values.xml",
             "map": [
                 {
-                    "source": "D:\\Dev\\PFM\\platforms\\tempPlugin\\core\\src\\main\\res\\values\\ids.xml",
+                    "source": "D:\\Dev\\Personal-Finance-Manager-PFM\\platforms\\tempPlugin\\core\\src\\main\\res\\values\\ids.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

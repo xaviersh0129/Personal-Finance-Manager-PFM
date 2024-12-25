@@ -61,7 +61,7 @@
                     }
                 },
                 {
-                    "source": "D:\\Dev\\PFM\\platforms\\android\\app\\src\\main\\res\\values-v21\\styles.xml",
+                    "source": "D:\\Dev\\Personal-Finance-Manager-PFM\\platforms\\android\\app\\src\\main\\res\\values-v21\\styles.xml",
                     "from": {
                         "startLines": "12,4,27,16,22",
                         "startColumns": "4,4,4,4,4",

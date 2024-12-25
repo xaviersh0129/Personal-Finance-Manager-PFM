@@ -5,16 +5,19 @@ import { formatCurrency, formatPercentage } from '../../utils/formatters';
 import { navigateToPage } from '../../utils/navigation';
 import { showDialog, ConfirmDialogOptions } from '../../utils/dialog';
 import { Logger } from '../../utils/logger';
+import { LiabilityDistributionViewModel } from './liability-distribution-view-model';
 
 const TAG = 'LiabilityListViewModel';
 
 export class LiabilityListViewModel extends BaseViewModel {
     private _liabilityService: LiabilityService;
     private _liabilities: Liability[] = [];
+    private _distributionViewModel: LiabilityDistributionViewModel;
 
     constructor() {
         super();
         this._liabilityService = LiabilityService.getInstance();
+        this._distributionViewModel = new LiabilityDistributionViewModel();
         this.loadLiabilities();
     }
 
@@ -30,11 +33,20 @@ export class LiabilityListViewModel extends BaseViewModel {
         return formatCurrency(this._liabilityService.getTotalLiabilities());
     }
 
-    onAddLiability() {
+    get distributionViewModel(): LiabilityDistributionViewModel {
+        return this._distributionViewModel;
+    }
+
+    refresh(): void {
+        Logger.debug(TAG, 'Refreshing liabilities list');
+        this.loadLiabilities();
+    }
+
+    onAddLiability(): void {
         navigateToPage("views/liabilities/add-liability-page");
     }
 
-    onItemTap(args: { index: number }) {
+    onItemTap(args: { index: number }): void {
         const liability = this._liabilities[args.index];
         showDialog({
             title: liability.name,
@@ -52,17 +64,23 @@ export class LiabilityListViewModel extends BaseViewModel {
         });
     }
 
-    private loadLiabilities() {
-        this._liabilities = this._liabilityService.getLiabilities();
-        this.notifyPropertyChange('liabilities', this.liabilities);
-        this.notifyPropertyChange('totalLiabilitiesFormatted', this.totalLiabilitiesFormatted);
+    private loadLiabilities(): void {
+        try {
+            this._liabilities = this._liabilityService.getLiabilities();
+            this._distributionViewModel.updateData(this._liabilities);
+            this.notifyPropertyChange('liabilities', this.liabilities);
+            this.notifyPropertyChange('totalLiabilitiesFormatted', this.totalLiabilitiesFormatted);
+            Logger.debug(TAG, `Loaded ${this._liabilities.length} liabilities`);
+        } catch (error) {
+            Logger.error(TAG, 'Error loading liabilities', error as Error);
+        }
     }
 
-    private editLiability(liability: Liability) {
+    private editLiability(liability: Liability): void {
         navigateToPage('views/liabilities/add-liability-page', { liability });
     }
 
-    private deleteLiability(liability: Liability) {
+    private deleteLiability(liability: Liability): void {
         const dialogOptions: ConfirmDialogOptions = {
             title: 'Confirm Delete',
             message: 'Are you sure you want to delete this liability?',

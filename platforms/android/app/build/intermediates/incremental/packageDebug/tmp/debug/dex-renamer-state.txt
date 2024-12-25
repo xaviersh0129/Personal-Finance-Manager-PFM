@@ -1,17 +1,17 @@
-#Wed Dec 25 17:03:44 SGT 2024
-base.0=D\:\\Dev\\PFM\\platforms\\android\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
-base.1=D\:\\Dev\\PFM\\platforms\\android\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
-base.10=D\:\\Dev\\PFM\\platforms\\android\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\6\\classes.dex
-base.11=D\:\\Dev\\PFM\\platforms\\android\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\7\\classes.dex
-base.12=D\:\\Dev\\PFM\\platforms\\android\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\8\\classes.dex
-base.2=D\:\\Dev\\PFM\\platforms\\android\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\10\\classes.dex
-base.3=D\:\\Dev\\PFM\\platforms\\android\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\11\\classes.dex
-base.4=D\:\\Dev\\PFM\\platforms\\android\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\12\\classes.dex
-base.5=D\:\\Dev\\PFM\\platforms\\android\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\13\\classes.dex
-base.6=D\:\\Dev\\PFM\\platforms\\android\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\14\\classes.dex
-base.7=D\:\\Dev\\PFM\\platforms\\android\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\2\\classes.dex
-base.8=D\:\\Dev\\PFM\\platforms\\android\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\3\\classes.dex
-base.9=D\:\\Dev\\PFM\\platforms\\android\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\5\\classes.dex
+#Wed Dec 25 21:49:40 SGT 2024
+base.0=D\:\\Dev\\Personal-Finance-Manager-PFM\\platforms\\android\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
+base.1=D\:\\Dev\\Personal-Finance-Manager-PFM\\platforms\\android\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
+base.10=D\:\\Dev\\Personal-Finance-Manager-PFM\\platforms\\android\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\6\\classes.dex
+base.11=D\:\\Dev\\Personal-Finance-Manager-PFM\\platforms\\android\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\7\\classes.dex
+base.12=D\:\\Dev\\Personal-Finance-Manager-PFM\\platforms\\android\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\8\\classes.dex
+base.2=D\:\\Dev\\Personal-Finance-Manager-PFM\\platforms\\android\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\10\\classes.dex
+base.3=D\:\\Dev\\Personal-Finance-Manager-PFM\\platforms\\android\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\11\\classes.dex
+base.4=D\:\\Dev\\Personal-Finance-Manager-PFM\\platforms\\android\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\12\\classes.dex
+base.5=D\:\\Dev\\Personal-Finance-Manager-PFM\\platforms\\android\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\13\\classes.dex
+base.6=D\:\\Dev\\Personal-Finance-Manager-PFM\\platforms\\android\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\14\\classes.dex
+base.7=D\:\\Dev\\Personal-Finance-Manager-PFM\\platforms\\android\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\2\\classes.dex
+base.8=D\:\\Dev\\Personal-Finance-Manager-PFM\\platforms\\android\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\3\\classes.dex
+base.9=D\:\\Dev\\Personal-Finance-Manager-PFM\\platforms\\android\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\5\\classes.dex
 path.0=classes.dex
 path.1=0/classes.dex
 path.10=6/classes.dex

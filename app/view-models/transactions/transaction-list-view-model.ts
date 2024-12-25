@@ -5,6 +5,7 @@ import { formatCurrency, formatDate } from '../../utils/formatters';
 import { navigateToPage } from '../../utils/navigation';
 import { showDialog, ConfirmDialogOptions } from '../../utils/dialog';
 import { Logger } from '../../utils/logger';
+import { TransactionDistributionViewModel } from './transaction-distribution-view-model';
 
 const TAG = 'TransactionListViewModel';
 
@@ -12,16 +13,22 @@ export class TransactionListViewModel extends BaseViewModel {
     private _transactions: Transaction[] = [];
     private _filterType: 'income' | 'expense' | undefined;
     private _transactionService: TransactionService;
+    private _distributionViewModel: TransactionDistributionViewModel;
 
     constructor(filterType?: 'income' | 'expense') {
         super();
         this._filterType = filterType;
         this._transactionService = TransactionService.getInstance();
+        this._distributionViewModel = new TransactionDistributionViewModel();
         this.loadTransactions();
     }
 
     get filterType(): 'income' | 'expense' | undefined {
         return this._filterType;
+    }
+
+    get distributionViewModel(): TransactionDistributionViewModel {
+        return this._distributionViewModel;
     }
 
     get totalAmountFormatted(): string {
@@ -45,13 +52,18 @@ export class TransactionListViewModel extends BaseViewModel {
         }));
     }
 
-    onAddTransaction() {
+    refresh(): void {
+        Logger.debug(TAG, 'Refreshing transactions list');
+        this.loadTransactions();
+    }
+
+    onAddTransaction(): void {
         navigateToPage('views/transactions/add-transaction-page', { 
             isIncome: this._filterType === 'income' 
         });
     }
 
-    onItemTap(args: { index: number }) {
+    onItemTap(args: { index: number }): void {
         const transaction = this._transactions[args.index];
         showDialog({
             title: transaction.description,
@@ -69,20 +81,28 @@ export class TransactionListViewModel extends BaseViewModel {
         });
     }
 
-    private loadTransactions() {
-        this._transactions = this._transactionService.getTransactions();
-        this.notifyPropertyChange('transactions', this.transactions);
-        this.notifyPropertyChange('totalAmountFormatted', this.totalAmountFormatted);
+    private loadTransactions(): void {
+        try {
+            this._transactions = this._transactionService.getTransactions();
+            if (this._filterType) {
+                this._distributionViewModel.updateData(this._transactions, this._filterType);
+            }
+            this.notifyPropertyChange('transactions', this.transactions);
+            this.notifyPropertyChange('totalAmountFormatted', this.totalAmountFormatted);
+            Logger.debug(TAG, `Loaded ${this._transactions.length} transactions`);
+        } catch (error) {
+            Logger.error(TAG, 'Error loading transactions', error as Error);
+        }
     }
 
-    private editTransaction(transaction: Transaction) {
+    private editTransaction(transaction: Transaction): void {
         navigateToPage('views/transactions/add-transaction-page', { 
             isIncome: transaction.type === 'income',
             transaction 
         });
     }
 
-    private deleteTransaction(transaction: Transaction) {
+    private deleteTransaction(transaction: Transaction): void {
         const dialogOptions: ConfirmDialogOptions = {
             title: 'Confirm Delete',
             message: 'Are you sure you want to delete this transaction?',

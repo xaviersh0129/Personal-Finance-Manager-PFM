@@ -11,3 +11,10 @@ export function navigatingTo(args: NavigatedData) {
         page.bindingContext = new LiabilityListViewModel();
     }
 }
+
+export function navigatedTo(args: NavigatedData) {
+    Logger.debug(TAG, 'Navigated to Liability List page');
+    const page = <Page>args.object;
+    const viewModel = page.bindingContext as LiabilityListViewModel;
+    viewModel?.refresh();
+}

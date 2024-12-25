@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<GridLayout columns="*, auto" rows="auto, auto" class="p-4 border-b bg-white">
+    <Label text="{{ title }}" row="0" col="0" class="font-bold text-gray-800" />
+    <Label text="{{ amount }}" row="0" col="1" class="{{ amountClass }}" />
+    <Label text="{{ subtitle }}" row="1" col="0" class="text-gray-600 text-sm" />
+    <Label text="{{ details }}" row="1" col="1" class="text-gray-600 text-sm text-right" />
+</GridLayout>
