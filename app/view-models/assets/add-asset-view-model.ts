@@ -11,7 +11,7 @@ export class AddAssetViewModel extends BaseViewModel {
     private _purchaseDate: Date = new Date();
     private _selectedCategoryIndex: number = 0;
     private _categories: AssetCategory[] = [
-        'Real Estate', 'Vehicles', 'Cash', 'Business', 'Saving', 'Stocks'
+        'Real Estate', 'Business', 'Stocks', 'Art & Antiquities', 'Saving/Cash'
     ];
     private _assetService: AssetService;
     private _existingAsset?: Asset;

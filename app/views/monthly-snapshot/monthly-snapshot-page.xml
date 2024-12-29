@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" 
+    navigatingTo="navigatingTo"
+    navigatedTo="navigatedTo"
+    unloaded="unloaded">
+    <ActionBar class="bg-blue-600">
+        <NavigationButton text="Back" android.systemIcon="ic_menu_back" tap="{{ goBack }}" />
+        <Label text="Monthly Snapshot" class="text-white text-lg font-bold" />
+    </ActionBar>
+    
+    <GridLayout rows="auto, *">
+        <!-- Add Button -->
+        <Button row="0" text="Add New Snapshot" tap="{{ onAddSnapshot }}" 
+                class="bg-blue-500 text-white font-medium p-4 m-4 rounded-xl elevation-2" />
+
+        <!-- History Section -->
+        <StackLayout row="1" class="bg-white m-4 rounded-xl elevation-4">
+            <Label text="Snapshot History" class="text-xl font-bold p-4" />
+            <ListView items="{{ snapshots }}" itemTap="{{ onItemTap }}" class="list-view">
+                <ListView.itemTemplate>
+                    <GridLayout columns="*, auto" rows="auto, auto" class="p-4 border-b">
+                        <Label text="{{ formattedDate }}" row="0" col="0" class="font-bold" />
+                        <Label text="{{ formattedNetAsset }}" row="0" col="1" class="text-right" />
+                        <Label text="Change:" row="1" col="0" class="text-sm text-gray-600" />
+                        <Label text="{{ formattedPercentageChange }}" row="1" col="1" 
+                               class="text-right text-sm" 
+                               color="{{ percentageChange >= 0 ? '#10B981' : '#EF4444' }}" />
+                    </GridLayout>
+                </ListView.itemTemplate>
+            </ListView>
+        </StackLayout>
+    </GridLayout>
+</Page>

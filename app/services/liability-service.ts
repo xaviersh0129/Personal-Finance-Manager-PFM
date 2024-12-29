@@ -19,10 +19,7 @@ export class LiabilityService extends BaseService<Liability> {
     }
 
     protected transformLoadedItems(items: any[]): Liability[] {
-        return items.map(data => new Liability({
-            ...data,
-            dueDate: new Date(data.dueDate)
-        }));
+        return items.map(data => new Liability(data));
     }
 
     addLiability(liability: Liability): void {

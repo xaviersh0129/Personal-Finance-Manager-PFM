@@ -8,8 +8,8 @@ const TAG = 'AddTransactionViewModel';
 export class AddTransactionViewModel extends BaseViewModel {
     private _description: string = '';
     private _amount: number = 0;
-    private _date: Date = new Date();
     private _selectedCategoryIndex: number = 0;
+    private _timeRequired: number = 1;
     private _categories: TransactionCategory[] = [];
     private _isIncome: boolean;
     private _transactionService: TransactionService;
@@ -30,8 +30,10 @@ export class AddTransactionViewModel extends BaseViewModel {
     private initializeWithExistingTransaction(transaction: Transaction) {
         this._description = transaction.description;
         this._amount = Number(transaction.amount);
-        this._date = new Date(transaction.date);
         this._selectedCategoryIndex = this._categories.indexOf(transaction.category);
+        if (transaction.type === 'income') {
+            this._timeRequired = transaction.timeRequired || 1;
+        }
     }
 
     get description(): string { return this._description; }
@@ -51,11 +53,12 @@ export class AddTransactionViewModel extends BaseViewModel {
         }
     }
 
-    get date(): Date { return this._date; }
-    set date(value: Date) {
-        if (this._date !== value) {
-            this._date = value;
-            this.notifyPropertyChange('date', value);
+    get timeRequired(): number { return this._timeRequired; }
+    set timeRequired(value: number | string) {
+        const numericValue = Number(value);
+        if (!isNaN(numericValue) && numericValue > 0 && this._timeRequired !== numericValue) {
+            this._timeRequired = numericValue;
+            this.notifyPropertyChange('timeRequired', numericValue);
         }
     }
 
@@ -72,8 +75,8 @@ export class AddTransactionViewModel extends BaseViewModel {
 
     private getCategories(): TransactionCategory[] {
         return this._isIncome 
-            ? ['Salary', 'Real Estate', 'Business', 'Interest/Dividends']
-            : ['Housing', 'Transportation', 'Food', 'Utilities', 'Insurance', 'Healthcare', 'Entertainment', 'Loan'];
+            ? ['Salary', 'Business', 'Rent', 'Interest', 'Royalties']
+            : ['Consumer basket', 'Habits', 'Car', 'Routine', 'Housing', 'Credit Card/Loan'];
     }
 
     onSave() {
@@ -83,8 +86,8 @@ export class AddTransactionViewModel extends BaseViewModel {
                 type: this._isIncome ? 'income' : 'expense',
                 category: this._categories[this._selectedCategoryIndex],
                 amount: this._amount,
-                date: this._date,
-                description: this._description
+                description: this._description,
+                timeRequired: this._isIncome ? this._timeRequired : undefined
             });
 
             if (this._existingTransaction) {

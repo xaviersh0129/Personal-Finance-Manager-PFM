@@ -33,7 +33,11 @@
                 
                 <!-- Due Date -->
                 <Label text="Due Date" class="form-label mt-4" />
-                <DatePicker date="{{ dueDate }}" class="input-field" />
+                <DatePicker date="{{ dueDate }}"
+                           year="{{ dueDate.getFullYear() }}"
+                           month="{{ dueDate.getMonth() }}"
+                           day="1"
+                           class="input-field" />
             </StackLayout>
             
             <!-- Save Button -->

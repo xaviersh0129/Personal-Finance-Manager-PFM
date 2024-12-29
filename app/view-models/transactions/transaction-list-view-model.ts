@@ -1,7 +1,7 @@
 import { BaseViewModel } from '../base-view-model';
 import { Transaction } from '../../models/transaction';
 import { TransactionService } from '../../services/transaction-service';
-import { formatCurrency, formatDate } from '../../utils/formatters';
+import { formatCurrency } from '../../utils/formatters';
 import { navigateToPage } from '../../utils/navigation';
 import { showDialog, ConfirmDialogOptions } from '../../utils/dialog';
 import { Logger } from '../../utils/logger';
@@ -48,7 +48,9 @@ export class TransactionListViewModel extends BaseViewModel {
         return filteredTransactions.map(transaction => ({
             ...transaction,
             formattedAmount: formatCurrency(transaction.amount),
-            formattedDate: formatDate(transaction.date)
+            hourlyRateFormatted: transaction.type === 'income' && transaction.timeRequired 
+                ? formatCurrency(Math.round((transaction.amount / transaction.timeRequired) * 100) / 100)
+                : ''
         }));
     }
 
@@ -65,9 +67,13 @@ export class TransactionListViewModel extends BaseViewModel {
 
     onItemTap(args: { index: number }): void {
         const transaction = this._transactions[args.index];
+        const hourlyRate = transaction.type === 'income' && transaction.timeRequired
+            ? `\nHourly Rate: ${formatCurrency(transaction.amount / transaction.timeRequired)}/hr`
+            : '';
+            
         showDialog({
             title: transaction.description,
-            message: `Amount: ${formatCurrency(transaction.amount)}\nDate: ${formatDate(transaction.date)}`,
+            message: `Amount: ${formatCurrency(transaction.amount)}${hourlyRate}`,
             actions: [
                 { id: 'edit', text: 'Edit' },
                 { id: 'delete', text: 'Delete' }

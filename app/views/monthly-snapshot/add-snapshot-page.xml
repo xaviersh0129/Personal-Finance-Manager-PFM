@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo">
+    <ActionBar class="bg-blue-600">
+        <NavigationButton text="Back" android.systemIcon="ic_menu_back" tap="{{ goBack }}" />
+        <Label text="{{ isEditing ? 'Edit Snapshot' : 'Add Snapshot' }}" class="text-white text-lg font-bold" />
+    </ActionBar>
+    
+    <StackLayout class="bg-gray-100">
+        <StackLayout class="bg-white p-6 m-4 rounded-xl elevation-4">
+            <!-- Year Selection -->
+            <Label text="Year" class="form-label" />
+            <ListPicker items="{{ years }}" 
+                       selectedIndex="{{ yearIndex }}"
+                       class="input-field" />
+
+            <!-- Month Selection -->
+            <Label text="Month" class="form-label mt-4" />
+            <ListPicker items="{{ months }}" 
+                       selectedIndex="{{ selectedMonth }}"
+                       class="input-field" />
+
+            <!-- Net Asset Value -->
+            <Label text="Net Asset Value" class="form-label mt-4" />
+            <TextField hint="Enter net asset value" text="{{ netAsset }}" 
+                      keyboardType="number"
+                      class="input-field" />
+                      
+            <Button text="{{ isEditing ? 'Update Snapshot' : 'Save Snapshot' }}" 
+                    tap="{{ onSave }}" 
+                    class="bg-blue-500 text-white font-medium p-4 mt-4 rounded-xl" />
+        </StackLayout>
+    </StackLayout>
+</Page>

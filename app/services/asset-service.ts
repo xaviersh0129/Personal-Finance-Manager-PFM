@@ -19,10 +19,7 @@ export class AssetService extends BaseService<Asset> {
     }
 
     protected transformLoadedItems(items: any[]): Asset[] {
-        return items.map(data => new Asset({
-            ...data,
-            purchaseDate: new Date(data.purchaseDate)
-        }));
+        return items.map(data => new Asset(data));
     }
 
     addAsset(asset: Asset): void {

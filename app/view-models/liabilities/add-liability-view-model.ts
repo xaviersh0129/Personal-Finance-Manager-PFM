@@ -11,7 +11,7 @@ export class AddLiabilityViewModel extends BaseViewModel {
     private _interestRate: number = 0;
     private _dueDate: Date = new Date();
     private _selectedTypeIndex: number = 0;
-    private _types: LiabilityType[] = ['Short-term', 'Long-term'];
+    private _types: LiabilityType[] = ['Loan', 'Debt/Payable'];
     private _liabilityService: LiabilityService;
     private _existingLiability?: Liability;
 

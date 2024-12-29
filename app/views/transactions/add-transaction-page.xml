@@ -27,9 +27,13 @@
                            selectedIndex="{{ selectedCategoryIndex }}"
                            class="input-field" />
                 
-                <!-- Date -->
-                <Label text="Date" class="form-label mt-4" />
-                <DatePicker date="{{ date }}" class="input-field" />
+                <!-- Time Required (Only for Income) -->
+                <StackLayout visibility="{{ isIncome ? 'visible' : 'collapsed' }}">
+                    <Label text="Time Required (Hours)" class="form-label mt-4" />
+                    <TextField hint="Enter hours required" text="{{ timeRequired }}" 
+                              keyboardType="number"
+                              class="input-field" />
+                </StackLayout>
             </StackLayout>
             
             <!-- Save Button -->

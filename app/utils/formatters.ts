@@ -23,10 +23,10 @@ export function formatDate(date: Date): string {
     return `${month} ${day}, ${year}`;
 }
 
-export function formatPercentage(value: number | string): string {
+export function formatPercentage(value: number | string, includeSymbol: boolean = true): string {
     const numericValue = typeof value === 'string' ? parseFloat(value) : value;
     if (isNaN(numericValue)) {
-        return '0.00%';
+        return includeSymbol ? '0.00%' : '0.00';
     }
-    return `${numericValue.toFixed(2)}%`;
+    return `${numericValue.toFixed(2)}${includeSymbol ? '%' : ''}`;
 }

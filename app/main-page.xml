@@ -6,10 +6,16 @@
     
     <ScrollView>
         <StackLayout class="bg-gray-100">
-            <!-- Net Worth Card -->
-            <GridLayout rows="auto, auto" class="bg-white m-4 p-6 rounded-xl elevation-4">
-                <Label text="Net Worth" class="text-gray-600 text-sm mb-1" row="0" />
-                <Label text="{{ netWorthFormatted }}" class="text-2xl font-bold" row="1" />
+            <!-- Cashflow & Hourly Rate -->
+            <GridLayout columns="*, *" class="mx-4 mt-4">
+                <StackLayout class="bg-white p-6 rounded-xl elevation-4 m-1" col="0">
+                    <Label text="Cashflow" class="text-gray-600 text-sm mb-1" />
+                    <Label text="{{ cashflowFormatted }}" class="{{ cashflow >= 0 ? 'text-green-600 text-2xl font-bold' : 'text-red-600 text-2xl font-bold' }}" />
+                </StackLayout>
+                <StackLayout class="bg-white p-6 rounded-xl elevation-4 m-1" col="1">
+                    <Label text="Hourly Rate" class="text-gray-600 text-sm mb-1" />
+                    <Label text="{{ hourlyRateFormatted }}" class="text-2xl font-bold" />
+                </StackLayout>
             </GridLayout>
 
             <!-- Quick Actions -->
@@ -31,16 +37,18 @@
                         row="1" col="1" />
             </GridLayout>
 
+            <!-- Monthly Snapshot Button -->
+            <Button text="MONTHLY SNAPSHOT" tap="onNavigateToMonthlySnapshot" 
+                    class="bg-indigo-500 text-white font-medium p-4 mx-4 mb-4 rounded-xl elevation-2" />
+
             <!-- Financial Summary Card -->
             <StackLayout class="bg-white m-4 p-6 rounded-xl elevation-4">
                 <Label text="Financial Summary" class="text-xl font-bold mb-4" />
                 
-                <!-- Monthly Cashflow -->
+                <!-- Net Worth -->
                 <GridLayout columns="*, auto" rows="auto" class="mb-4">
-                    <Label text="Monthly Cashflow:" class="text-gray-600" row="0" col="0" />
-                    <Label text="{{ cashflowFormatted }}" 
-                           class="{{ cashflow >= 0 ? 'text-green-600' : 'text-red-600' }} text-right font-bold" 
-                           row="0" col="1" />
+                    <Label text="Net Worth:" class="text-gray-600" row="0" col="0" />
+                    <Label text="{{ netWorthFormatted }}" class="text-right font-bold" row="0" col="1" />
                 </GridLayout>
 
                 <!-- Total Income -->
@@ -62,10 +70,16 @@
                 </GridLayout>
 
                 <!-- Total Liabilities -->
-                <GridLayout columns="*, auto" rows="auto" class="mb-4">
+                <GridLayout columns="*, auto" rows="auto">
                     <Label text="Total Liabilities:" class="text-gray-600" row="0" col="0" />
                     <Label text="{{ totalLiabilitiesFormatted }}" class="text-purple-600 text-right font-bold" row="0" col="1" />
                 </GridLayout>
+            </StackLayout>
+
+            <!-- Sharpe Ratio Card -->
+            <StackLayout class="bg-white m-4 p-6 rounded-xl elevation-4">
+                <Label text="Sharpe Ratio" class="text-xl font-bold mb-4" />
+                <Label text="{{ sharpeRatioFormatted }}" class="text-2xl font-bold" />
             </StackLayout>
         </StackLayout>
     </ScrollView>

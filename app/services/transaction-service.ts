@@ -23,7 +23,7 @@ export class TransactionService extends BaseService<Transaction> {
         return items.map(data => new Transaction({
             ...data,
             amount: Number(data.amount),
-            date: new Date(data.date)
+            timeRequired: data.timeRequired ? Number(data.timeRequired) : undefined
         }));
     }
 
@@ -53,14 +53,6 @@ export class TransactionService extends BaseService<Transaction> {
         return this.getItems();
     }
 
-    getMonthlyTransactions(month: number, year: number): Transaction[] {
-        return this.items.filter(t => {
-            const transactionDate = t.date;
-            return transactionDate.getMonth() === month && 
-                   transactionDate.getFullYear() === year;
-        });
-    }
-
     getTotalIncome(): number {
         return this.items
             .filter(t => t.type === 'income')
@@ -71,5 +63,11 @@ export class TransactionService extends BaseService<Transaction> {
         return this.items
             .filter(t => t.type === 'expense')
             .reduce((sum, t) => sum + Number(t.amount), 0);
+    }
+
+    getTotalTimeRequired(): number {
+        return this.items
+            .filter(t => t.type === 'income' && t.timeRequired)
+            .reduce((sum, t) => sum + Number(t.timeRequired || 0), 0);
     }
 }

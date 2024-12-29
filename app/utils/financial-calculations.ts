@@ -30,7 +30,7 @@ export function calculateDebtToIncomeRatio(
     const monthlyDebtPayments = liabilities.reduce((sum, liability) => {
         // Simple monthly payment calculation
         const monthlyRate = liability.interestRate / 12 / 100;
-        const months = liability.type === 'Short-term' ? 12 : 360; // 1 year or 30 years
+        const months = liability.type === 'Debt/Payable' ? 12 : 360; // 1 year or 30 years
         const payment = (liability.amount * monthlyRate * Math.pow(1 + monthlyRate, months)) 
             / (Math.pow(1 + monthlyRate, months) - 1);
         return sum + payment;

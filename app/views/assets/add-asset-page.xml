@@ -27,7 +27,11 @@
                 
                 <!-- Purchase Date -->
                 <Label text="Purchase Date" class="form-label mt-4" />
-                <DatePicker date="{{ purchaseDate }}" class="input-field" />
+                <DatePicker date="{{ purchaseDate }}" 
+                           year="{{ purchaseDate.getFullYear() }}"
+                           month="{{ purchaseDate.getMonth() }}"
+                           day="1"
+                           class="input-field" />
             </StackLayout>
             
             <!-- Save Button -->

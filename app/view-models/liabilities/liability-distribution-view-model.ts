@@ -25,7 +25,7 @@ export class LiabilityDistributionViewModel extends Observable {
             .map(([type, value]) => ({
                 label: type,
                 value,
-                color: type === 'Short-term' ? ChartColors.ShortTerm : ChartColors.LongTerm,
+                color: type === 'Debt/Payable' ? ChartColors.ShortTerm : ChartColors.LongTerm,
                 percentage: total > 0 ? Math.round((value / total) * 100) : 0
             }))
             .sort((a, b) => b.value - a.value);
