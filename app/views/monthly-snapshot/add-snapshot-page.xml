@@ -25,6 +25,7 @@
                       keyboardType="number"
                       class="input-field" />
                       
+            <!-- Save Button - Fixed tap binding -->
             <Button text="{{ isEditing ? 'Update Snapshot' : 'Save Snapshot' }}" 
                     tap="{{ onSave }}" 
                     class="bg-blue-500 text-white font-medium p-4 mt-4 rounded-xl" />

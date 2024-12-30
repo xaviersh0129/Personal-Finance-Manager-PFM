@@ -4,6 +4,14 @@ import { AssetService } from '../services/asset-service';
 import { LiabilityService } from '../services/liability-service';
 import { MonthlySnapshotService } from '../services/monthly-snapshot-service';
 import { formatCurrency, formatPercentage } from '../utils/formatters';
+import { 
+    calculateNetWorth, 
+    calculateMonthlyCashflow, 
+    calculateWeightedAverageInterestRate,
+    calculateDTI,
+    calculateLR,
+    calculateDAR
+} from '../utils/financial-calculations';
 import { Logger } from '../utils/logger';
 
 const TAG = 'DashboardViewModel';
@@ -17,6 +25,11 @@ export class DashboardViewModel extends Observable {
     private _cashflow: number = 0;
     private _hourlyRate: number = 0;
     private _sharpeRatio: number | null = null;
+    private _weightedInterestRate: number = 0;
+    private _dti: number = 0;
+    private _lr: number = 0;
+    private _dar: number = 0;
+
     private transactionService: TransactionService;
     private assetService: AssetService;
     private liabilityService: LiabilityService;
@@ -31,6 +44,7 @@ export class DashboardViewModel extends Observable {
         this.calculateFinancials();
     }
 
+    // Existing getters...
     get netWorthFormatted(): string {
         return formatCurrency(this._netWorth);
     }
@@ -69,8 +83,29 @@ export class DashboardViewModel extends Observable {
             : 'N/A';
     }
 
+    get weightedInterestRateFormatted(): string {
+        return formatPercentage(this._weightedInterestRate);
+    }
+
+    // New getters for financial ratios
+    get dtiFormatted(): string {
+        return formatPercentage(this._dti);
+    }
+
+    get lrFormatted(): string {
+        return this._lr.toFixed(2);
+    }
+
+    get darFormatted(): string {
+        return formatPercentage(this._dar);
+    }
+
     private calculateFinancials() {
         try {
+            const assets = this.assetService.getAssets();
+            const liabilities = this.liabilityService.getLiabilities();
+            const transactions = this.transactionService.getTransactions();
+
             // Calculate totals
             this._totalAssets = this.assetService.getTotalAssetValue();
             this._totalLiabilities = this.liabilityService.getTotalLiabilities();
@@ -78,23 +113,10 @@ export class DashboardViewModel extends Observable {
             this._totalExpenses = this.transactionService.getTotalExpenses();
 
             // Calculate net worth
-            this._netWorth = this._totalAssets - this._totalLiabilities;
+            this._netWorth = calculateNetWorth(assets, liabilities);
 
             // Calculate monthly cashflow
-            const currentDate = new Date();
-            const currentMonth = currentDate.getMonth();
-            const currentYear = currentDate.getFullYear();
-            const monthlyTransactions = this.transactionService.getMonthlyTransactions(currentMonth, currentYear);
-
-            const monthlyIncome = monthlyTransactions
-                .filter(t => t.type === 'income')
-                .reduce((sum, t) => sum + t.amount, 0);
-
-            const monthlyExpenses = monthlyTransactions
-                .filter(t => t.type === 'expense')
-                .reduce((sum, t) => sum + t.amount, 0);
-
-            this._cashflow = monthlyIncome - monthlyExpenses;
+            this._cashflow = calculateMonthlyCashflow(transactions);
 
             // Calculate hourly rate
             const totalTimeRequired = this.transactionService.getTotalTimeRequired();
@@ -102,6 +124,14 @@ export class DashboardViewModel extends Observable {
 
             // Calculate Sharpe Ratio
             this._sharpeRatio = this.monthlySnapshotService.calculateSharpeRatio();
+
+            // Calculate weighted average interest rate
+            this._weightedInterestRate = calculateWeightedAverageInterestRate(liabilities);
+
+            // Calculate new financial ratios
+            this._dti = calculateDTI(transactions);
+            this._lr = calculateLR(assets, transactions);
+            this._dar = calculateDAR(assets, liabilities);
 
             // Notify all property changes
             this.notifyPropertyChange('netWorthFormatted', this.netWorthFormatted);
@@ -113,6 +143,10 @@ export class DashboardViewModel extends Observable {
             this.notifyPropertyChange('cashflow', this.cashflow);
             this.notifyPropertyChange('hourlyRateFormatted', this.hourlyRateFormatted);
             this.notifyPropertyChange('sharpeRatioFormatted', this.sharpeRatioFormatted);
+            this.notifyPropertyChange('weightedInterestRateFormatted', this.weightedInterestRateFormatted);
+            this.notifyPropertyChange('dtiFormatted', this.dtiFormatted);
+            this.notifyPropertyChange('lrFormatted', this.lrFormatted);
+            this.notifyPropertyChange('darFormatted', this.darFormatted);
 
             Logger.debug(TAG, 'Financial calculations completed successfully');
         } catch (error) {

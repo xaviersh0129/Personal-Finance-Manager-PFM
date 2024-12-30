@@ -79,6 +79,8 @@ export class AddSnapshotViewModel extends BaseViewModel {
 
     onSave() {
         try {
+            Logger.debug(TAG, 'Attempting to save snapshot');
+            
             if (this._netAsset <= 0) {
                 throw new Error('Net asset value must be greater than 0');
             }

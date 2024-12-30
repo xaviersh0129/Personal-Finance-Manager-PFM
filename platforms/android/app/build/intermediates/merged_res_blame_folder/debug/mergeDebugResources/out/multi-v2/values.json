@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "org.nativescript.app-mergeDebugResources-27:/values/values.xml",
+            "outputFile": "org.nativescript.cetepfm.app-mergeDebugResources-27:/values/values.xml",
             "map": [
                 {
                     "source": "C:\\Users\\huash\\.gradle\\caches\\transforms-3\\2fa507502eede56217776c45d361a2d3\\transformed\\drawerlayout-1.1.1\\res\\values\\values.xml",
@@ -27,10 +27,10 @@
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
-                        "startOffsets": "114",
+                        "startOffsets": "116",
                         "endLines": "5",
                         "endColumns": "12",
-                        "endOffsets": "309"
+                        "endOffsets": "314"
                     },
                     "to": {
                         "startLines": "5265",
@@ -82,9 +82,9 @@
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",
-                        "startOffsets": "55,96",
+                        "startOffsets": "57,99",
                         "endColumns": "40,53",
-                        "endOffsets": "91,145"
+                        "endOffsets": "93,148"
                     },
                     "to": {
                         "startLines": "1719,1856",
@@ -389,9 +389,9 @@
                     "from": {
                         "startLines": "3,2,4,5",
                         "startColumns": "4,4,4,4",
-                        "startOffsets": "107,55,146,184",
+                        "startOffsets": "110,57,150,189",
                         "endColumns": "38,51,37,39",
-                        "endOffsets": "141,102,179,219"
+                        "endOffsets": "144,104,183,224"
                     },
                     "to": {
                         "startLines": "594,782,796,809",

@@ -1,6 +1,6 @@
 1<?xml version="1.0" encoding="utf-8"?>
 2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-3    package="org.nativescript.app"
+3    package="org.nativescript.cetepfm"
 4    android:versionCode="1"
 5    android:versionName="1.0.0" >
 6
@@ -99,7 +99,7 @@
 57-->[androidx.emoji2:emoji2:1.2.0] C:\Users\huash\.gradle\caches\transforms-3\c8482bc2fc833122a323859a7b47a5a1\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:24:9-32:20
 58            android:name="androidx.startup.InitializationProvider"
 58-->[androidx.emoji2:emoji2:1.2.0] C:\Users\huash\.gradle\caches\transforms-3\c8482bc2fc833122a323859a7b47a5a1\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:25:13-67
-59            android:authorities="org.nativescript.app.androidx-startup"
+59            android:authorities="org.nativescript.cetepfm.androidx-startup"
 59-->[androidx.emoji2:emoji2:1.2.0] C:\Users\huash\.gradle\caches\transforms-3\c8482bc2fc833122a323859a7b47a5a1\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:26:13-68
 60            android:exported="false" >
 60-->[androidx.emoji2:emoji2:1.2.0] C:\Users\huash\.gradle\caches\transforms-3\c8482bc2fc833122a323859a7b47a5a1\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:27:13-37

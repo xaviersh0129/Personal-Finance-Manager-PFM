@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "org.nativescript.app-mergeReleaseResources-22:/values-kk/values-kk.xml",
+            "outputFile": "org.nativescript.cetepfm.app-mergeReleaseResources-22:/values-kk/values-kk.xml",
             "map": [
                 {
                     "source": "C:\\Users\\huash\\.gradle\\caches\\transforms-3\\b388342c6649a74854b96245825cc094\\transformed\\appcompat-1.5.1\\res\\values-kk\\values-kk.xml",

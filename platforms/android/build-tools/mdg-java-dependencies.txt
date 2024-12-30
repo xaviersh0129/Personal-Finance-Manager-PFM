@@ -54,3 +54,4 @@ D:\Dev\Personal-Finance-Manager-PFM\platforms\android\build\exploded-dependencie
 D:\Dev\Personal-Finance-Manager-PFM\platforms\android\build\exploded-dependencies\f8982345c599020d7b27de03e6c30347\vectordrawable-animated-1.1.0-api.jar
 D:\Dev\Personal-Finance-Manager-PFM\platforms\android\build\exploded-dependencies\f8d9baf29ac0244624d8cddb99fe9c28\lifecycle-viewmodel-2.5.1-api.jar
 D:\Dev\Personal-Finance-Manager-PFM\platforms\android\build\exploded-dependencies\fcfeda9556c38253c8e4ec112331f890\appcompat-1.5.1-api.jar
+D:\Dev\Personal-Finance-Manager-PFM\platforms\android\app\build\intermediates\javac\debug

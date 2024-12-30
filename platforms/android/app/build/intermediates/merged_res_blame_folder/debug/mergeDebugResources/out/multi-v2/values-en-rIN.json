@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "org.nativescript.app-mergeDebugResources-27:/values-en-rIN/values-en-rIN.xml",
+            "outputFile": "org.nativescript.cetepfm.app-mergeDebugResources-27:/values-en-rIN/values-en-rIN.xml",
             "map": [
                 {
                     "source": "C:\\Users\\huash\\.gradle\\caches\\transforms-3\\b388342c6649a74854b96245825cc094\\transformed\\appcompat-1.5.1\\res\\values-en-rIN\\values-en-rIN.xml",

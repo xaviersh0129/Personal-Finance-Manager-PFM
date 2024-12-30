@@ -1,17 +1,17 @@
 {
     "logs": [
         {
-            "outputFile": "org.nativescript.app-mergeReleaseResources-22:/values/values.xml",
+            "outputFile": "org.nativescript.cetepfm.app-mergeReleaseResources-22:/values/values.xml",
             "map": [
                 {
                     "source": "D:\\Dev\\Personal-Finance-Manager-PFM\\platforms\\android\\app\\src\\main\\res\\values\\errorstyles.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
-                        "startOffsets": "114",
+                        "startOffsets": "116",
                         "endLines": "5",
                         "endColumns": "12",
-                        "endOffsets": "309"
+                        "endOffsets": "314"
                     },
                     "to": {
                         "startLines": "1441",
@@ -63,9 +63,9 @@
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",
-                        "startOffsets": "55,96",
+                        "startOffsets": "57,99",
                         "endColumns": "40,53",
-                        "endOffsets": "91,145"
+                        "endOffsets": "93,148"
                     },
                     "to": {
                         "startLines": "319,322",

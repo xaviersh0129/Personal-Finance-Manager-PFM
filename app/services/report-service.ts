@@ -3,11 +3,7 @@ import { TransactionService } from './transaction-service';
 import { AssetService } from './asset-service';
 import { LiabilityService } from './liability-service';
 import { FinancialHealthReport, MonthlyReport } from '../models/financial-report';
-import { 
-    calculateNetWorth, 
-    calculateMonthlyCashflow,
-    calculateDebtToIncomeRatio 
-} from '../utils/financial-calculations';
+import { calculateNetWorth, calculateMonthlyCashflow } from '../utils/financial-calculations';
 
 export class ReportService extends Observable {
     private static instance: ReportService;
@@ -40,7 +36,7 @@ export class ReportService extends Observable {
 
         return {
             netWorth: calculateNetWorth(assets, liabilities),
-            debtToIncomeRatio: calculateDebtToIncomeRatio(monthlyIncome, liabilities),
+            debtToIncomeRatio: monthlyIncome > 0 ? this.liabilityService.getTotalLiabilities() / monthlyIncome : 0,
             monthlyCashflow: calculateMonthlyCashflow(transactions),
             monthlyReports: this.generateMonthlyReports()
         };

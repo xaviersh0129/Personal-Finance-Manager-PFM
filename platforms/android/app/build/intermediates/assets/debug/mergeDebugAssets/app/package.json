@@ -1,8 +1,8 @@
 {
-	"name": "stackblitz-nativescript-typescript",
-	"id": "org.nativescript.app",
+	"name": "cete-pfm",
+	"id": "org.nativescript.cetepfm",
 	"appPath": "app",
-	"appResourcesPath": "../../tools/assets/App_Resources",
+	"appResourcesPath": "App_Resources",
 	"android": {
 		"v8Flags": "--expose_gc",
 		"markingMode": "none"

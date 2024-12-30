@@ -51,7 +51,7 @@ MERGED from [androidx.print:print:1.0.0] C:\Users\huash\.gradle\caches\transform
 MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\huash\.gradle\caches\transforms-3\aa0d92407b647d56566a67d2f21329f7\transformed\interpolator-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.annotation:annotation-experimental:1.1.0] C:\Users\huash\.gradle\caches\transforms-3\4732c56d6d377528e36fdc18f96f9939\transformed\jetified-annotation-experimental-1.1.0\AndroidManifest.xml:17:1-24:12
 	package
-		ADDED from D:\Dev\Personal-Finance-Manager-PFM\platforms\android\app\src\main\AndroidManifest.xml:3:2-32
+		ADDED from D:\Dev\Personal-Finance-Manager-PFM\platforms\android\app\src\main\AndroidManifest.xml:3:2-36
 		INJECTED from D:\Dev\Personal-Finance-Manager-PFM\platforms\android\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from D:\Dev\Personal-Finance-Manager-PFM\platforms\android\app\src\main\AndroidManifest.xml

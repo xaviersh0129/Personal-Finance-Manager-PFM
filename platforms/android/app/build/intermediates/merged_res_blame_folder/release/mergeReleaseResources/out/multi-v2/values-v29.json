@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "org.nativescript.app-mergeReleaseResources-22:/values-v29/values-v29.xml",
+            "outputFile": "org.nativescript.cetepfm.app-mergeReleaseResources-22:/values-v29/values-v29.xml",
             "map": [
                 {
                     "source": "D:\\Dev\\Personal-Finance-Manager-PFM\\platforms\\android\\app\\src\\main\\res\\values-v29\\styles.xml",

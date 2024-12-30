@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "org.nativescript.app-mergeDebugResources-27:/values-en-rGB/values-en-rGB.xml",
+            "outputFile": "org.nativescript.cetepfm.app-mergeDebugResources-27:/values-en-rGB/values-en-rGB.xml",
             "map": [
                 {
                     "source": "C:\\Users\\huash\\.gradle\\caches\\transforms-3\\18cbb846eec0063f273c737d38da1bc8\\transformed\\material-1.8.0\\res\\values-en-rGB\\values-en-rGB.xml",

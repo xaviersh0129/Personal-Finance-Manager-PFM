@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "org.nativescript.app-mergeDebugResources-27:/values-w600dp-land-v13/values-w600dp-land-v13.xml",
+            "outputFile": "org.nativescript.cetepfm.app-mergeDebugResources-27:/values-w600dp-land-v13/values-w600dp-land-v13.xml",
             "map": [
                 {
                     "source": "C:\\Users\\huash\\.gradle\\caches\\transforms-3\\18cbb846eec0063f273c737d38da1bc8\\transformed\\material-1.8.0\\res\\values-w600dp-land-v13\\values-w600dp-land-v13.xml",
