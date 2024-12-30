@@ -1,7 +1,7 @@
 import { BaseViewModel } from '../base-view-model';
 import { Asset } from '../../models/asset';
 import { AssetService } from '../../services/asset-service';
-import { formatCurrency, formatDate } from '../../utils/formatters';
+import { formatCurrency } from '../../utils/formatters';
 import { navigateToPage } from '../../utils/navigation';
 import { showDialog } from '../../utils/dialog';
 import { Logger } from '../../utils/logger';
@@ -24,8 +24,7 @@ export class AssetListViewModel extends BaseViewModel {
     get assets() {
         return this._assets.map(asset => ({
             ...asset,
-            formattedValue: formatCurrency(asset.value),
-            formattedDate: formatDate(asset.purchaseDate)
+            formattedValue: formatCurrency(asset.value)
         }));
     }
 
@@ -51,7 +50,7 @@ export class AssetListViewModel extends BaseViewModel {
         const asset = this._assets[args.index];
         showDialog({
             title: asset.name,
-            message: `Value: ${formatCurrency(asset.value)}\nPurchase Date: ${formatDate(asset.purchaseDate)}`,
+            message: `Value: ${formatCurrency(asset.value)}`,
             actions: [
                 { id: 'edit', text: 'Edit' },
                 { id: 'delete', text: 'Delete' }

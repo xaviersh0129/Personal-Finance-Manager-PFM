@@ -9,7 +9,6 @@ export class AddLiabilityViewModel extends BaseViewModel {
     private _name: string = '';
     private _amount: number = 0;
     private _interestRate: number = 0;
-    private _dueDate: Date = new Date();
     private _selectedTypeIndex: number = 0;
     private _types: LiabilityType[] = ['Loan', 'Debt/Payable'];
     private _liabilityService: LiabilityService;
@@ -29,7 +28,6 @@ export class AddLiabilityViewModel extends BaseViewModel {
         this._name = liability.name;
         this._amount = liability.amount;
         this._interestRate = liability.interestRate;
-        this._dueDate = new Date(liability.dueDate);
         this._selectedTypeIndex = this._types.indexOf(liability.type);
     }
 
@@ -56,14 +54,6 @@ export class AddLiabilityViewModel extends BaseViewModel {
         if (!isNaN(numericValue) && this._interestRate !== numericValue) {
             this._interestRate = numericValue;
             this.notifyPropertyChange('interestRate', numericValue);
-        }
-    }
-
-    get dueDate(): Date { return this._dueDate; }
-    set dueDate(value: Date) {
-        if (this._dueDate !== value) {
-            this._dueDate = value;
-            this.notifyPropertyChange('dueDate', value);
         }
     }
 
@@ -95,8 +85,7 @@ export class AddLiabilityViewModel extends BaseViewModel {
                 name: this._name.trim(),
                 amount: this._amount,
                 interestRate: this._interestRate,
-                type: this._types[this._selectedTypeIndex],
-                dueDate: this._dueDate
+                type: this._types[this._selectedTypeIndex]
             });
 
             if (this._existingLiability) {

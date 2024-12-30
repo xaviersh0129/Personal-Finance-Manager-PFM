@@ -27,6 +27,10 @@ export class TransactionService extends BaseService<Transaction> {
         }));
     }
 
+    getMonthlyTransactions(month: number, year: number): Transaction[] {
+        return this.items.filter(t => t.month === month && t.year === year);
+    }
+
     addTransaction(transaction: Transaction): void {
         transaction.amount = Number(transaction.amount);
         if (isNaN(transaction.amount)) {

@@ -8,7 +8,6 @@ const TAG = 'AddAssetViewModel';
 export class AddAssetViewModel extends BaseViewModel {
     private _name: string = '';
     private _value: number = 0;
-    private _purchaseDate: Date = new Date();
     private _selectedCategoryIndex: number = 0;
     private _categories: AssetCategory[] = [
         'Real Estate', 'Business', 'Stocks', 'Art & Antiquities', 'Saving/Cash'
@@ -29,7 +28,6 @@ export class AddAssetViewModel extends BaseViewModel {
     private initializeWithExistingAsset(asset: Asset) {
         this._name = asset.name;
         this._value = asset.value;
-        this._purchaseDate = new Date(asset.purchaseDate);
         this._selectedCategoryIndex = this._categories.indexOf(asset.category);
     }
 
@@ -47,14 +45,6 @@ export class AddAssetViewModel extends BaseViewModel {
         if (!isNaN(numericValue) && this._value !== numericValue) {
             this._value = numericValue;
             this.notifyPropertyChange('value', numericValue);
-        }
-    }
-
-    get purchaseDate(): Date { return this._purchaseDate; }
-    set purchaseDate(value: Date) {
-        if (this._purchaseDate !== value) {
-            this._purchaseDate = value;
-            this.notifyPropertyChange('purchaseDate', value);
         }
     }
 
@@ -81,8 +71,7 @@ export class AddAssetViewModel extends BaseViewModel {
                 ...(this._existingAsset && { id: this._existingAsset.id }),
                 name: this._name.trim(),
                 value: this._value,
-                category: this._categories[this._selectedCategoryIndex],
-                purchaseDate: this._purchaseDate
+                category: this._categories[this._selectedCategoryIndex]
             });
 
             if (this._existingAsset) {

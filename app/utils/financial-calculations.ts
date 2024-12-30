@@ -14,8 +14,8 @@ export function calculateMonthlyCashflow(transactions: Transaction[]): number {
     const currentYear = currentDate.getFullYear();
 
     const monthlyTransactions = transactions.filter(t => 
-        t.date.getMonth() === currentMonth && 
-        t.date.getFullYear() === currentYear
+        t.month === currentMonth && 
+        t.year === currentYear
     );
 
     return monthlyTransactions.reduce((sum, t) => 
