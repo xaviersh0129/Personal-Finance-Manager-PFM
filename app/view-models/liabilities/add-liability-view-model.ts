@@ -66,6 +66,8 @@ export class AddLiabilityViewModel extends BaseViewModel {
         }
     }
 
+    get isEditing(): boolean { return !!this._existingLiability; }
+
     onSave() {
         try {
             if (!this._name.trim()) {

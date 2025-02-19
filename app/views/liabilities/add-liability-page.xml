@@ -2,7 +2,7 @@
 <Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo">
     <ActionBar class="bg-blue-600">
         <NavigationButton text="Back" android.systemIcon="ic_menu_back" tap="{{ goBack }}" />
-        <Label text="Add Liability" class="text-white text-lg font-bold" />
+        <Label text="{{ isEditing ? 'Edit Liability' : 'Add Liability' }}" class="text-white text-lg font-bold" />
     </ActionBar>
     
     <ScrollView class="bg-gray-100">
@@ -33,7 +33,7 @@
             </StackLayout>
             
             <!-- Save Button -->
-            <Button text="Save Liability" tap="{{ onSave }}" 
+            <Button text="{{ isEditing ? 'Update Liability' : 'Save Liability' }}" tap="{{ onSave }}" 
                     class="bg-purple-500 text-white font-medium p-4 mt-4 rounded-xl elevation-2" />
         </StackLayout>
     </ScrollView>

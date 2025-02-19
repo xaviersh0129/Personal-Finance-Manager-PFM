@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo">
+    <ActionBar class="bg-blue-600">
+        <Label text="Cete PFM" class="text-white text-lg font-bold" />
+    </ActionBar>
+    
+    <ScrollView>
+        <StackLayout class="bg-gray-100">
+            <!-- Key Metrics -->
+            <GridLayout columns="*, *" class="mx-4 mt-4">
+                <StackLayout class="bg-white p-6 rounded-xl elevation-4 m-1" col="0">
+                    <Label text="Monthly Cashflow" class="text-gray-600 text-sm mb-1" />
+                    <Label text="{{ cashflowFormatted }}" 
+                           class="{{ cashflow >= 0 ? 'text-green-600 text-2xl font-bold' : 'text-red-600 text-2xl font-bold' }}" />
+                </StackLayout>
+                <StackLayout class="bg-white p-6 rounded-xl elevation-4 m-1" col="1">
+                    <Label text="Hourly Rate" class="text-gray-600 text-sm mb-1" />
+                    <Label text="{{ hourlyRateFormatted }}" class="text-2xl font-bold" />
+                </StackLayout>
+            </GridLayout>
+
+            <!-- Quick Actions -->
+            <GridLayout columns="*, *" rows="auto, auto" class="mx-4 mb-4">
+                <Button text="INCOME" tap="{{ onNavigateToIncome }}" 
+                        class="bg-green-500 text-white font-medium p-4 m-1 rounded-xl elevation-2" 
+                        row="0" col="0" />
+                <Button text="EXPENSE" tap="{{ onNavigateToExpense }}" 
+                        class="bg-red-500 text-white font-medium p-4 m-1 rounded-xl elevation-2" 
+                        row="0" col="1" />
+                
+                <Button text="ASSETS" tap="{{ onNavigateToAssets }}" 
+                        class="bg-blue-500 text-white font-medium p-4 m-1 rounded-xl elevation-2" 
+                        row="1" col="0" />
+                <Button text="LIABILITIES" tap="{{ onNavigateToLiabilities }}" 
+                        class="bg-purple-500 text-white font-medium p-4 m-1 rounded-xl elevation-2" 
+                        row="1" col="1" />
+            </GridLayout>
+
+            <!-- Monthly Snapshot Button -->
+            <Button text="MONTHLY SNAPSHOT" tap="{{ onNavigateToMonthlySnapshot }}" 
+                    class="bg-indigo-500 text-white font-medium p-4 mx-4 mb-4 rounded-xl elevation-2" />
+
+            <!-- Financial Metrics -->
+            <StackLayout class="bg-white m-4 p-6 rounded-xl elevation-4">
+                <Label text="Financial Metrics" class="text-xl font-bold mb-4"/>
+                
+                <GridLayout columns="*, auto" rows="auto" class="mb-4">
+                    <Label text="Net Worth:" class="text-gray-600" row="0" col="0"/>
+                    <Label text="{{ netWorthFormatted }}" class="text-right font-bold" row="0" col="1"/>
+                </GridLayout>
+
+                <GridLayout columns="*, auto" rows="auto" class="mb-4">
+                    <Label text="Debt-to-Income:" class="text-gray-600" row="0" col="0"/>
+                    <Label text="{{ dtiFormatted }}" class="text-right font-bold" row="0" col="1"/>
+                </GridLayout>
+
+                <GridLayout columns="*, auto" rows="auto" class="mb-4">
+                    <Label text="Liquidity Ratio:" class="text-gray-600" row="0" col="0"/>
+                    <Label text="{{ lrFormatted }}" class="text-right font-bold" row="0" col="1"/>
+                </GridLayout>
+
+                <GridLayout columns="*, auto" rows="auto" class="mb-4">
+                    <Label text="Debt-to-Asset:" class="text-gray-600" row="0" col="0"/>
+                    <Label text="{{ darFormatted }}" class="text-right font-bold" row="0" col="1"/>
+                </GridLayout>
+
+                <GridLayout columns="*, auto" rows="auto" class="mb-4">
+                    <Label text="Weighted Interest Rate:" class="text-gray-600" row="0" col="0"/>
+                    <Label text="{{ weightedInterestRateFormatted }}" class="text-right font-bold" row="0" col="1"/>
+                </GridLayout>
+
+                <GridLayout columns="*, auto" rows="auto">
+                    <Label text="Sharpe Ratio:" class="text-gray-600" row="0" col="0"/>
+                    <Label text="{{ sharpeRatioFormatted }}" class="text-right font-bold" row="0" col="1"/>
+                </GridLayout>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</Page>

@@ -66,7 +66,7 @@ export class TransactionListViewModel extends BaseViewModel {
     }
 
     onItemTap(args: { index: number }): void {
-        const transaction = this._transactions[args.index];
+        const transaction = this._transactions.filter(t => t.type === this._filterType)[args.index];
         const hourlyRate = transaction.type === 'income' && transaction.timeRequired
             ? `\nHourly Rate: ${formatCurrency(transaction.amount / transaction.timeRequired)}/hr`
             : '';
@@ -102,6 +102,7 @@ export class TransactionListViewModel extends BaseViewModel {
     }
 
     private editTransaction(transaction: Transaction): void {
+        Logger.debug(TAG, `Editing transaction: ${transaction.id}`);
         navigateToPage('views/transactions/add-transaction-page', { 
             isIncome: transaction.type === 'income',
             transaction 

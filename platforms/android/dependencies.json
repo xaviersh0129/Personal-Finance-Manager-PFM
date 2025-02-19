@@ -3,5 +3,10 @@
         "name": "@nativescript/core",
         "directory": "..\\..\\node_modules\\@nativescript\\core",
         "dependencies": []
+    },
+    {
+        "name": "nativescript-sqlite",
+        "directory": "..\\..\\node_modules\\nativescript-sqlite",
+        "dependencies": []
     }
 ]

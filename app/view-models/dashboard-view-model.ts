@@ -1,4 +1,5 @@
 import { Observable } from '@nativescript/core';
+import { navigateToPage } from '../utils/navigation';
 import { TransactionService } from '../services/transaction-service';
 import { AssetService } from '../services/asset-service';
 import { LiabilityService } from '../services/liability-service';
@@ -44,25 +45,30 @@ export class DashboardViewModel extends Observable {
         this.calculateFinancials();
     }
 
-    // Existing getters...
+    // Navigation methods
+    onNavigateToIncome() {
+        navigateToPage('views/transactions/transaction-list-page', { filterType: 'income' });
+    }
+
+    onNavigateToExpense() {
+        navigateToPage('views/transactions/transaction-list-page', { filterType: 'expense' });
+    }
+
+    onNavigateToAssets() {
+        navigateToPage('views/assets/asset-list-page');
+    }
+
+    onNavigateToLiabilities() {
+        navigateToPage('views/liabilities/liability-list-page');
+    }
+
+    onNavigateToMonthlySnapshot() {
+        navigateToPage('views/monthly-snapshot/monthly-snapshot-page');
+    }
+
+    // Formatted getters
     get netWorthFormatted(): string {
         return formatCurrency(this._netWorth);
-    }
-
-    get totalIncomeFormatted(): string {
-        return formatCurrency(this._totalIncome);
-    }
-
-    get totalExpensesFormatted(): string {
-        return formatCurrency(this._totalExpenses);
-    }
-
-    get totalAssetsFormatted(): string {
-        return formatCurrency(this._totalAssets);
-    }
-
-    get totalLiabilitiesFormatted(): string {
-        return formatCurrency(this._totalLiabilities);
     }
 
     get cashflowFormatted(): string {
@@ -87,7 +93,6 @@ export class DashboardViewModel extends Observable {
         return formatPercentage(this._weightedInterestRate);
     }
 
-    // New getters for financial ratios
     get dtiFormatted(): string {
         return formatPercentage(this._dti);
     }
@@ -112,45 +117,37 @@ export class DashboardViewModel extends Observable {
             this._totalIncome = this.transactionService.getTotalIncome();
             this._totalExpenses = this.transactionService.getTotalExpenses();
 
-            // Calculate net worth
+            // Calculate metrics
             this._netWorth = calculateNetWorth(assets, liabilities);
-
-            // Calculate monthly cashflow
             this._cashflow = calculateMonthlyCashflow(transactions);
-
-            // Calculate hourly rate
+            
             const totalTimeRequired = this.transactionService.getTotalTimeRequired();
             this._hourlyRate = totalTimeRequired > 0 ? this._totalIncome / totalTimeRequired : 0;
-
-            // Calculate Sharpe Ratio
+            
             this._sharpeRatio = this.monthlySnapshotService.calculateSharpeRatio();
-
-            // Calculate weighted average interest rate
             this._weightedInterestRate = calculateWeightedAverageInterestRate(liabilities);
-
-            // Calculate new financial ratios
             this._dti = calculateDTI(transactions);
             this._lr = calculateLR(assets, transactions);
             this._dar = calculateDAR(assets, liabilities);
 
-            // Notify all property changes
-            this.notifyPropertyChange('netWorthFormatted', this.netWorthFormatted);
-            this.notifyPropertyChange('totalIncomeFormatted', this.totalIncomeFormatted);
-            this.notifyPropertyChange('totalExpensesFormatted', this.totalExpensesFormatted);
-            this.notifyPropertyChange('totalAssetsFormatted', this.totalAssetsFormatted);
-            this.notifyPropertyChange('totalLiabilitiesFormatted', this.totalLiabilitiesFormatted);
-            this.notifyPropertyChange('cashflowFormatted', this.cashflowFormatted);
-            this.notifyPropertyChange('cashflow', this.cashflow);
-            this.notifyPropertyChange('hourlyRateFormatted', this.hourlyRateFormatted);
-            this.notifyPropertyChange('sharpeRatioFormatted', this.sharpeRatioFormatted);
-            this.notifyPropertyChange('weightedInterestRateFormatted', this.weightedInterestRateFormatted);
-            this.notifyPropertyChange('dtiFormatted', this.dtiFormatted);
-            this.notifyPropertyChange('lrFormatted', this.lrFormatted);
-            this.notifyPropertyChange('darFormatted', this.darFormatted);
-
+            // Notify property changes
+            this.notifyPropertyChanges();
+            
             Logger.debug(TAG, 'Financial calculations completed successfully');
         } catch (error) {
             Logger.error(TAG, 'Error calculating financials', error as Error);
         }
+    }
+
+    private notifyPropertyChanges() {
+        this.notifyPropertyChange('netWorthFormatted', this.netWorthFormatted);
+        this.notifyPropertyChange('cashflowFormatted', this.cashflowFormatted);
+        this.notifyPropertyChange('cashflow', this.cashflow);
+        this.notifyPropertyChange('hourlyRateFormatted', this.hourlyRateFormatted);
+        this.notifyPropertyChange('sharpeRatioFormatted', this.sharpeRatioFormatted);
+        this.notifyPropertyChange('weightedInterestRateFormatted', this.weightedInterestRateFormatted);
+        this.notifyPropertyChange('dtiFormatted', this.dtiFormatted);
+        this.notifyPropertyChange('lrFormatted', this.lrFormatted);
+        this.notifyPropertyChange('darFormatted', this.darFormatted);
     }
 }

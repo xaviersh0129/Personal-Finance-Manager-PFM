@@ -14,12 +14,12 @@ export abstract class BaseService<T extends { id: string }> extends Observable {
         this.loadItems();
     }
 
-    protected loadItems(): void {
+    protected async loadItems(): Promise<void> {
         try {
             if (!this.storageKey) {
                 throw new Error('Storage key not set');
             }
-            const savedItems = this.storageService.getItem<any[]>(this.storageKey, []);
+            const savedItems = await this.storageService.getItem<any[]>(this.storageKey, []);
             this.items = this.transformLoadedItems(savedItems);
             Logger.debug(this.TAG, `Loaded ${this.items.length} items from ${this.storageKey}`);
         } catch (error) {
@@ -28,12 +28,12 @@ export abstract class BaseService<T extends { id: string }> extends Observable {
         }
     }
 
-    protected saveItems(): void {
+    protected async saveItems(): Promise<void> {
         try {
             if (!this.storageKey) {
                 throw new Error('Storage key not set');
             }
-            this.storageService.setItem(this.storageKey, this.items);
+            await this.storageService.setItem(this.storageKey, this.items);
             Logger.debug(this.TAG, `Saved ${this.items.length} items to ${this.storageKey}`);
         } catch (error) {
             Logger.error(this.TAG, `Error saving items to ${this.storageKey}`, error as Error);
@@ -42,18 +42,18 @@ export abstract class BaseService<T extends { id: string }> extends Observable {
 
     protected abstract transformLoadedItems(items: any[]): T[];
 
-    protected addItem(item: T): void {
+    protected async addItem(item: T): Promise<void> {
         if (!item.id) {
             Logger.error(this.TAG, 'Cannot add item without id');
             return;
         }
         this.items.push(item);
-        this.saveItems();
+        await this.saveItems();
         this.notifyPropertyChange('items', this.items);
         Logger.debug(this.TAG, `Added item with id: ${item.id}`);
     }
 
-    protected updateItem(item: T): void {
+    protected async updateItem(item: T): Promise<void> {
         if (!item.id) {
             Logger.error(this.TAG, 'Cannot update item without id');
             return;
@@ -61,19 +61,19 @@ export abstract class BaseService<T extends { id: string }> extends Observable {
         const index = this.items.findIndex(i => i.id === item.id);
         if (index !== -1) {
             this.items[index] = item;
-            this.saveItems();
+            await this.saveItems();
             this.notifyPropertyChange('items', this.items);
             Logger.debug(this.TAG, `Updated item with id: ${item.id}`);
         }
     }
 
-    protected deleteItem(id: string): void {
+    protected async deleteItem(id: string): Promise<void> {
         if (!id) {
             Logger.error(this.TAG, 'Cannot delete item without id');
             return;
         }
         this.items = this.items.filter(item => item.id !== id);
-        this.saveItems();
+        await this.saveItems();
         this.notifyPropertyChange('items', this.items);
         Logger.debug(this.TAG, `Deleted item with id: ${id}`);
     }

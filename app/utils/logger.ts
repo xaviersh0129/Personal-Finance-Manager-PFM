@@ -1,30 +1,30 @@
 import { isAndroid } from '@nativescript/core';
+import { AndroidLogger } from './platform/android-logger';
+import { ConsoleLogger } from './platform/console-logger';
+import { Logger as LoggerInterface } from './logger-interface';
 
-export class Logger {
-    static debug(tag: string, message: string, ...args: any[]): void {
-        const logMessage = `[${tag}] ${message}`;
-        if (args.length > 0) {
-            console.log(logMessage, ...args);
-        } else {
-            console.log(logMessage);
-        }
+class LoggerService {
+    private androidLogger: LoggerInterface;
+    private consoleLogger: LoggerInterface;
 
-        if (isAndroid && global.android) {
-            // @ts-ignore: Android specific code
-            android.util.Log.d(tag, message);
+    constructor() {
+        this.androidLogger = new AndroidLogger();
+        this.consoleLogger = new ConsoleLogger();
+    }
+
+    debug(tag: string, message: string, ...args: any[]): void {
+        this.consoleLogger.debug(tag, message, ...args);
+        if (isAndroid) {
+            this.androidLogger.debug(tag, message);
         }
     }
 
-    static error(tag: string, message: string, error?: Error): void {
-        const logMessage = `[${tag}] ERROR: ${message}`;
-        console.error(logMessage);
-        if (error) {
-            console.error(error);
-        }
-
-        if (isAndroid && global.android) {
-            // @ts-ignore: Android specific code
-            android.util.Log.e(tag, message);
+    error(tag: string, message: string, error?: Error): void {
+        this.consoleLogger.error(tag, message, error);
+        if (isAndroid) {
+            this.androidLogger.error(tag, message);
         }
     }
 }
+
+export const Logger = new LoggerService();

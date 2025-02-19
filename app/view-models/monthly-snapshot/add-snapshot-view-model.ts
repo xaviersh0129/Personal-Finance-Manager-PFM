@@ -2,13 +2,14 @@ import { BaseViewModel } from '../base-view-model';
 import { MonthlySnapshot } from '../../models/monthly-snapshot';
 import { MonthlySnapshotService } from '../../services/monthly-snapshot-service';
 import { EventBusService, EventNames } from '../../services/event-bus-service';
+import { showDialog } from '../../utils/dialog';
 import { Logger } from '../../utils/logger';
 
 const TAG = 'AddSnapshotViewModel';
 
 export class AddSnapshotViewModel extends BaseViewModel {
     private _netAsset: number = 0;
-    private _yearIndex: number = 2; // Default to current year (middle of the 5-year range)
+    private _selectedYear: number;
     private _selectedMonth: number;
     private _years: number[] = [];
     private _months: string[] = [
@@ -26,6 +27,7 @@ export class AddSnapshotViewModel extends BaseViewModel {
         this._existingSnapshot = existingSnapshot;
         
         const currentDate = new Date();
+        this._selectedYear = currentDate.getFullYear();
         this._selectedMonth = currentDate.getMonth();
         
         this.initializeYears();
@@ -44,15 +46,13 @@ export class AddSnapshotViewModel extends BaseViewModel {
         }
     }
 
-    get yearIndex(): number { return this._yearIndex; }
-    set yearIndex(value: number) {
-        if (this._yearIndex !== value) {
-            this._yearIndex = value;
-            this.notifyPropertyChange('yearIndex', value);
+    get selectedYear(): number { return this._selectedYear; }
+    set selectedYear(value: number) {
+        if (this._selectedYear !== value) {
+            this._selectedYear = value;
+            this.notifyPropertyChange('selectedYear', value);
         }
     }
-
-    get selectedYear(): number { return this._years[this._yearIndex]; }
 
     get selectedMonth(): number { return this._selectedMonth; }
     set selectedMonth(value: number) {
@@ -64,7 +64,6 @@ export class AddSnapshotViewModel extends BaseViewModel {
 
     get years(): number[] { return this._years; }
     get months(): string[] { return this._months; }
-    get isEditing(): boolean { return !!this._existingSnapshot; }
 
     private initializeYears() {
         const currentYear = new Date().getFullYear();
@@ -73,38 +72,61 @@ export class AddSnapshotViewModel extends BaseViewModel {
 
     private initializeWithExistingSnapshot(snapshot: MonthlySnapshot) {
         this._netAsset = snapshot.netAsset;
-        this._yearIndex = this._years.indexOf(snapshot.year);
+        this._selectedYear = snapshot.year;
         this._selectedMonth = snapshot.month;
     }
 
-    onSave() {
+    async onSave(): Promise<void> {
         try {
             Logger.debug(TAG, 'Attempting to save snapshot');
             
-            if (this._netAsset <= 0) {
-                throw new Error('Net asset value must be greater than 0');
+            if (isNaN(this._netAsset)) {
+                throw new Error('Please enter a valid number for net asset value');
+            }
+
+            const existing = this._snapshotService.getSnapshots().find(
+                s => s.year === this._selectedYear && 
+                     s.month === this._selectedMonth &&
+                     (!this._existingSnapshot || s.id !== this._existingSnapshot.id)
+            );
+
+            if (existing) {
+                const result = await showDialog({
+                    title: 'Snapshot Exists',
+                    message: 'A snapshot already exists for this month. Do you want to update it?',
+                    okButtonText: 'Update',
+                    cancelButtonText: 'Cancel'
+                });
+
+                if (!result) {
+                    return;
+                }
             }
 
             const snapshot = new MonthlySnapshot({
                 ...(this._existingSnapshot && { id: this._existingSnapshot.id }),
-                year: this.selectedYear,
+                year: this._selectedYear,
                 month: this._selectedMonth,
                 netAsset: this._netAsset
             });
 
             if (this._existingSnapshot) {
                 this._snapshotService.updateSnapshot(snapshot);
-                Logger.debug(TAG, `Successfully updated snapshot for ${this._months[this._selectedMonth]} ${this.selectedYear}`);
+                Logger.debug(TAG, `Successfully updated snapshot for ${this._months[this._selectedMonth]} ${this._selectedYear}`);
             } else {
                 this._snapshotService.addSnapshot(snapshot);
-                Logger.debug(TAG, `Successfully added snapshot for ${this._months[this._selectedMonth]} ${this.selectedYear}`);
+                Logger.debug(TAG, `Successfully added snapshot for ${this._months[this._selectedMonth]} ${this._selectedYear}`);
             }
 
-            // Emit event before navigating back
             this._eventBus.emit(EventNames.SNAPSHOT_UPDATED);
             this.goBack();
         } catch (error) {
             Logger.error(TAG, 'Error saving snapshot', error as Error);
+            await showDialog({
+                title: 'Error',
+                message: error instanceof Error ? error.message : 'Failed to save snapshot',
+                okButtonText: 'OK'
+            });
         }
     }
 }
